@@ -1,23 +1,27 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <myHeader />
+    <router-view />
   </div>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
-</script>
+import myHeader from "@/components/myHeader";
 
+export default {
+  name: "App",
+  components: {
+    myHeader
+  }
+};
+</script>
+  
 <style>
+html,
+body,
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  margin: 0px;
+  height: 100%;
+  width: 100%;
 }
 </style>
