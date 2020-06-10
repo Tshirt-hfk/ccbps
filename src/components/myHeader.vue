@@ -14,7 +14,7 @@
           class="header-el-menu"
           mode="horizontal"
           text-color="#ffffff"
-          background-color="#0000ff"
+          background-color="#0066CC"
           active-text-color="#00ff00"
           @select="handleSelect"
         >
@@ -43,7 +43,7 @@ export default {
   data() {
       return {
         activeIndex: '1',
-        username: "欧阳诚",
+        username: "我是方磊",
         circleUrl: "https://i2.hdslb.com/bfs/face/62325a7fa7aab0e2e49d7e755d4a15145489c382.jpg_64x64.jpg"
       };
     },
@@ -57,59 +57,70 @@ export default {
 
 <style scoped>
 .header {
-  height: 50px;
+  height: 70px;
   width: 100%;
-  background: blue;
+  background: #0066CC;
 }
 .header-middle {
   margin: auto auto;
   width: 1600px;
-  height: 40px;
+  height: 60px;
   position: relative;
   top: 5px;
 }
 
 .header-l {
   float: left;
-  height: 40px;
+  height: 60px;
+  margin-top: 5px;
 }
 .header-l-logo, .header-r-image {
   float: left;
-  height: 40px;
+  height: 60px;
   width: 40px;
 }
 .header-l-logo-1 {
   position: absolute;
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   z-index: 98;
 }
 .header-l-logo-2 {
   position: absolute;
-  height: 19px;
-  width: 16px;
+  height: 23px;
+  width: 19px;
   z-index: 97;
-  top: 9px;
-  left: 9px;
+  top: 16px;
+  left: 12px;
 }
-.header-l-title, .header-r-name {
+.header-l-title {
   float: left;
-  margin-left: 8px;
+  margin-left: 15px;
+  height: 40px;
+  line-height: 45px;
+  text-align: center;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+.header-r-name {
+  float: left;
+  margin-left: 10px;
   height: 40px;
   line-height: 40px;
   text-align: center;
   color: white;
-  font-size: 22px;
+  font-size: 16px;
 }
 
 .header-m {
   float: left;
-  margin-left: 350px;
-  height: 40px;
+  margin-left: 280px;
+  height: 60px;
 }
 
 .header-el-menu {
-  height: 40px;
+  height: 60px;
 }
 
 .el-menu {
@@ -117,18 +128,15 @@ export default {
 }
 
 .el-menu-item  {
-  height: 40px;
-  line-height: 40px;
-  font-size: 15px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 18px;
 }
 
 .header-r {
   float: left;
-  margin-left: 150px;
-  height: 40px;
-}
-
-.header-r-name {
-  font-size: 16px;
+  margin-left: 200px;
+  height: 60px;
+  padding-top: 10px;
 }
 </style>
