@@ -21,6 +21,11 @@ export default new Router({
       path: '/illegalfund',
       name: 'illegalFund',
       component: () => import('../views/illegalFund')
+    },
+    {
+      path: '/gatheringcenter',
+      name: 'gatheringCenter',
+      component: () => import('../views/gatheringCenter')
     }
   ]
 })

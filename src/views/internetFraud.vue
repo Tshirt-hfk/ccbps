@@ -169,13 +169,13 @@ export default {
     width: 100%;
     position: absolute;
     top: 85px;
-    bottom: 0px;
 }
 .if-main{
     width: 1280px;
-    height: 100%;
+    min-height: 860px;
     background-color: #FFFFFF;
     margin: 0 auto;
+    margin-bottom: 15px;
 }
 .if-main-title{
   height: 80px;
@@ -192,7 +192,7 @@ export default {
     float: left;
     position: absolute;
     top: 150px;
-    bottom: 0px;
+    bottom: 40px;
     padding-left: 20px;
 }
 .if-main-event{

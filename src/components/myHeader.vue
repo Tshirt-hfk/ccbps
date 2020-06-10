@@ -56,7 +56,7 @@ export default {
         else if(key == '3')
             this.$router.push("/illegalfund");
         else if(key == '4')
-            this.$router.push("/");
+            this.$router.push("/gatheringcenter");
         else if(key == '5')
             this.$router.push("/");
       }
