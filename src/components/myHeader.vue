@@ -49,7 +49,16 @@ export default {
     },
     methods: {
       handleSelect(key, keyPath) {
-        console.log(key, keyPath);
+        if(key == '1')
+            this.$router.push("/");
+        else if(key == '2')
+            this.$router.push("/internetfraud");
+        else if(key == '3')
+            this.$router.push("/illegalfund");
+        else if(key == '4')
+            this.$router.push("/");
+        else if(key == '5')
+            this.$router.push("/");
       }
     }
 };
@@ -62,8 +71,8 @@ export default {
   background: #0066CC;
 }
 .header-middle {
-  margin: auto auto;
-  width: 1600px;
+  margin: auto;
+  width: 1300px;
   height: 60px;
   position: relative;
   top: 5px;
@@ -115,7 +124,7 @@ export default {
 
 .header-m {
   float: left;
-  margin-left: 280px;
+  margin-left: 150px;
   height: 60px;
 }
 

@@ -5,11 +5,22 @@ import index from '@/views/index'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
       name: 'index',
       component: index
+    },
+    {
+      path: '/internetfraud',
+      name: 'internetFraud',
+      component: () => import('../views/internetFraud')
+    },
+    {
+      path: '/illegalfund',
+      name: 'illegalFund',
+      component: () => import('../views/illegalFund')
     }
   ]
 })

@@ -23,5 +23,6 @@ body,
   margin: 0px;
   height: 100%;
   width: 100%;
+  background-color: #F0F2F5;
 }
 </style>
