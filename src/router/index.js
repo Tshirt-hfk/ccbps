@@ -13,6 +13,11 @@ export default new Router({
       component: index
     },
     {
+      path: '/globalScan',
+      name: 'globalScan',
+      component: () => import('../views/globalScan')
+    },
+    {
       path: '/internetfraud',
       name: 'internetFraud',
       component: () => import('../views/internetFraud')

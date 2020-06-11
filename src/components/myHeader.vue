@@ -50,7 +50,7 @@ export default {
     methods: {
       handleSelect(key, keyPath) {
         if(key == '1')
-            this.$router.push("/");
+            this.$router.push("/globalScan");
         else if(key == '2')
             this.$router.push("/internetfraud");
         else if(key == '3')
