@@ -14,6 +14,11 @@ export default new Router({
       redirect: '/globalScan'
     },
     {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/login')
+    },
+    {
       path: '/globalScan',
       name: 'globalScan',
       component: () => import('../views/globalScan')
