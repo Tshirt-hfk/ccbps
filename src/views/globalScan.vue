@@ -37,15 +37,15 @@
         <div>
           <div class="one-three">
             <div class="one-three-title">诈骗模式统计</div>
-            <div>
+            <div class="one-three-ranking" v-for="data in ranking" :key='data.name'>
                 <el-col :span="4">
-                  <div class="line-center">1</div>
+                  <img class="one-three-icon" :src="data.image" />
                 </el-col>
                 <el-col :span="12">
-                  <div class="line-center">微信中奖</div>
+                  <div class="line-center">{{data.name}}</div>
                 </el-col>
                 <el-col :span="8">
-                  <div class="line-center">26</div>
+                  <div class="line-center">{{data.num}}</div>
                 </el-col>
             </div>
           </div>
@@ -77,21 +77,29 @@ export default {
   data() {
     return {
       activeName: "first",
-      normData:[{
-        title: '今日总量',
-        data: '356'        
-      },{
-        title: '较昨日',
-        data: '92%'
-      },{
-        title: '本周总量',
-        data: '1735'
-      },{
-        title: '较上周',
-        data: '19%'
-      }],
       normTitle: ['今日总量', '较昨日', '本周总量', '较上周'],
-      normData: ['356', '92%', '1735', '19%']
+      normData: ['356', '92%', '1735', '19%'],
+      ranking:[{       // 诈骗模式排名
+        image: '/static/images/number1.png',
+        name: '微信中奖',
+        num: '26'
+      },{
+        image: '/static/images/number2.png',
+        name: '彩票中奖',
+        num: '24'
+      },{
+        image: '/static/images/number3.png',
+        name: '谎报车祸',
+        num: '13'
+      },{
+        image: '/static/images/number4.png',
+        name: '银行卡冻结',
+        num: '6'
+      },{
+        image: '/static/images/number5.png',
+        name: '论文发表',
+        num: '4'
+      }]
     };
   },
   mounted() {},
@@ -194,9 +202,18 @@ export default {
   border-bottom: solid 2px #DCDFE6;
   padding-bottom: 10px;
 }
+.one-three-ranking{
+  width: 380px;
+  height: 40px;
+  margin: 8px 0 0 5px;
+}
+.one-three-icon{
+  height: 20px;
+  width: 20px;
+  margin-top: 9px;
+}
 .line-center {
   line-height: 36px;
-  text-align: center;
 }
 
 .clear {
