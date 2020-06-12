@@ -18,6 +18,13 @@ export default {
     chartLineInit() {
       this.chartLine = echarts.init(this.$refs.chartLine);
       var option = {
+        tooltip: {              //设置tip提示
+          trigger: 'axis'
+        },
+        legend:{
+          data:['网络诈骗', '非法集资']
+        },
+        color: ['#ffdddd', '#ffdd77'],
         xAxis: {
           type: "category",
           boundaryGap: false,
@@ -28,18 +35,20 @@ export default {
         },
         series: [
           {
+            name: '网络诈骗',
             data: [820, 932, 901, 934, 1290, 1330, 1320],
             type: "line",
             areaStyle: {},
             smooth: true,
-            color: "#ffdddd"
+            color: "#fcae91"
           },
           {
+            name: '非法集资',
             data: [520, 955, 931, 434, 890, 1440, 1320],
             type: "line",
             areaStyle: {},
             smooth: true,
-            color: "#ffdd77"
+            color: "#fb6a4a"
           }
         ]
       };

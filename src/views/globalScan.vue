@@ -12,15 +12,23 @@
       <div class="gc-main-data">
         <div>
           <div class="gc-main-left">
+            <div class="gc-main-left-norm">
+              <div class='gc-main-left-normTitle' v-for='title in normTitle' :key='title'>
+                {{title}}
+              </div>
+              <div class='gc-main-left-normData' v-for='data in normData' :key='data'>
+                {{data}}
+              </div>
+            </div>
             <myMap></myMap>
           </div>
           <div class="gc-main-right">
             <div class="smooth-line">
-              <div>总量</div>
+              <div class='gc-main-right-title' style="margin-bottom: 20px">近一周趋势</div>
               <chartLine></chartLine>
             </div>
             <div>
-              <div>高发区域排行</div>
+              <div class='gc-main-right-title'>高发区域排行</div>
               <chartBar></chartBar>
             </div>
             <div class="clear"></div>
@@ -28,7 +36,7 @@
         </div>
         <div>
           <div class="one-three">
-            <div>诈骗模式统计</div>
+            <div class="one-three-title">诈骗模式统计</div>
             <div>
                 <el-col :span="4">
                   <div class="line-center">1</div>
@@ -39,11 +47,10 @@
                 <el-col :span="8">
                   <div class="line-center">26</div>
                 </el-col>
-              </el-row>
             </div>
           </div>
           <div class="one-three">
-            <div>来源占比</div>
+            <div class="one-three-title">来源占比</div>
             <chartPie></chartPie>
           </div>
           <div></div>
@@ -69,7 +76,22 @@ export default {
   },
   data() {
     return {
-      activeName: "first"
+      activeName: "first",
+      normData:[{
+        title: '今日总量',
+        data: '356'        
+      },{
+        title: '较昨日',
+        data: '92%'
+      },{
+        title: '本周总量',
+        data: '1735'
+      },{
+        title: '较上周',
+        data: '19%'
+      }],
+      normTitle: ['今日总量', '较昨日', '本周总量', '较上周'],
+      normData: ['356', '92%', '1735', '19%']
     };
   },
   mounted() {},
@@ -112,9 +134,44 @@ export default {
   width: 68%;
   float: left;
 }
+.gc-main-left-norm{
+  width: 800px;
+  height: 80px;
+  margin-left: 8px;
+}
+.gc-main-left-normTitle{
+  color: #909399;
+  float: left;
+  width: 200px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.gc-main-left-normData{
+  float: left;
+  width: 200px;
+  font-size: 25px;
+}
 .gc-main-right {
   width: 32%;
   float: left;
+}
+.gc-main-right-title{
+  height: 30px;
+  color: #666;
+  line-height: 30px;
+  font-size: 18px;
+  margin: 25px 0 0 35px;
+  font-weight: bold;
+}
+.gc-main-right-title::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 25px;
+  background-color: #4d95dc;
+  position: absolute;
+  margin-left: -25px;
+  margin-top: 4px;
 }
 
 .gc-main-data {
@@ -128,7 +185,14 @@ export default {
 
 .one-three {
   float: left;
-  width: 30%;
+  width: 400px;
+  margin-right: 15px;
+}
+.one-three-title{
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: solid 2px #DCDFE6;
+  padding-bottom: 10px;
 }
 .line-center {
   line-height: 36px;

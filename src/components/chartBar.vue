@@ -53,7 +53,7 @@ export default {
             barWidth: "60%",
             data: [10, 52, 200, 334, 390, 330, 220],
             stack: 'a',
-            color: "#ffdddd"
+            color: "#fcae91"
           },
           {
             name: "非法集资",
@@ -61,7 +61,7 @@ export default {
             barWidth: "60%",
             data: [10, 52, 200, 334, 390, 330, 220],
             stack: 'a',
-            color: "#ffdd77"
+            color: "#fb6a4a"
           }
         ]
       };

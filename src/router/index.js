@@ -10,7 +10,8 @@ export default new Router({
     {
       path: '/',
       name: 'index',
-      component: index
+      component: index,
+      redirect: '/globalScan'
     },
     {
       path: '/globalScan',
@@ -31,6 +32,11 @@ export default new Router({
       path: '/gatheringcenter',
       name: 'gatheringCenter',
       component: () => import('../views/gatheringCenter')
+    },
+    {
+      path: '/systemoptions',
+      name: 'systemOptions',
+      component: () => import('../views/systemOptions')
     }
   ]
 })

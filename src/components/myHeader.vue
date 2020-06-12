@@ -58,7 +58,7 @@ export default {
         else if(key == '4')
             this.$router.push("/gatheringcenter");
         else if(key == '5')
-            this.$router.push("/");
+            this.$router.push("/systemoptions");
       }
     }
 };

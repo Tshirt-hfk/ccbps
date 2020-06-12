@@ -223,7 +223,7 @@ export default {
         remoteMethod(query) {
             if (query !== "") {
                 this.tableData = this.applications.filter(entry => {
-                return entry.name.toLowerCase().indexOf(query.toLowerCase()) > -1;
+                return entry.source.toLowerCase().indexOf(query.toLowerCase()) > -1;
                 });
                 this.displayData = this.tableData.slice(0, this.pagesize);
             } else {
