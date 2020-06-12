@@ -53,7 +53,10 @@
             <div class="one-three-title">来源占比</div>
             <chartPie></chartPie>
           </div>
-          <div></div>
+          <div class="one-three">
+            <div class="one-three-title">热词</div>
+            <wordCloud></wordCloud>
+          </div>
           <div class="clear"></div>
         </div>
       </div>
@@ -66,13 +69,15 @@ import myMap from "@/components/myMap";
 import chartLine from "@/components/chartLine";
 import chartBar from "@/components/chartBar";
 import chartPie from "@/components/chartPie";
+import wordCloud from "@/components/wordCloud";
 export default {
   name: "globalScan",
   components: {
     myMap,
     chartLine,
     chartBar,
-    chartPie
+    chartPie,
+    wordCloud
   },
   data() {
     return {
@@ -193,7 +198,7 @@ export default {
 
 .one-three {
   float: left;
-  width: 400px;
+  width: 390px;
   margin-right: 15px;
 }
 .one-three-title{
