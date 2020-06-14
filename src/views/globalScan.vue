@@ -130,13 +130,12 @@ export default {
   margin-bottom: 15px;
 }
 .gc-main-title {
-  height: 80px;
-  text-align: center;
-  line-height: 80px;
-  font-size: 25px;
-  color: #666;
-  margin: 0 0 40px 0;
-  padding: 25px 0 0 0;
+  line-height: 60px;
+  height: 60px;
+  margin-left: 40px;
+  padding-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
 }
 .gc-main-event {
   width: 1200px;

@@ -39,6 +39,11 @@ export default new Router({
       component: () => import('../views/gatheringCenter')
     },
     {
+      path: '/eventdetails',
+      name: 'eventDetails',
+      component: () => import('../views/eventDetails')
+    },
+    {
       path: '/systemoptions',
       name: 'systemOptions',
       component: () => import('../views/systemOptions')
