@@ -4,6 +4,7 @@
 
 <script>
 import echarts from "echarts";
+import mydata from "@/data/data.js";
 export default {
   name: "chartLine",
   data() {
@@ -36,7 +37,7 @@ export default {
         series: [
           {
             name: '网络诈骗',
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            data: mydata.myLine.data[0],
             type: "line",
             areaStyle: {},
             smooth: true,
@@ -44,7 +45,7 @@ export default {
           },
           {
             name: '非法集资',
-            data: [520, 955, 931, 434, 890, 1440, 1320],
+            data: mydata.myLine.data[1],
             type: "line",
             areaStyle: {},
             smooth: true,

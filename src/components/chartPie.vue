@@ -4,6 +4,7 @@
 
 <script>
 import echarts from "echarts";
+import mydata from "@/data/data.js";
 export default {
   name: "chartPie",
   data() {
@@ -25,7 +26,7 @@ export default {
         legend: {
           orient: "vertical",
           left: 320,
-          data: ["微博", "微信", "论坛", "短信", "其他"]
+          data: mydata.mySource.data[0]
         },
         series: [
           {
@@ -47,13 +48,7 @@ export default {
             labelLine: {
               show: false
             },
-            data: [
-              { value: 335, name: "微博" },
-              { value: 310, name: "微信" },
-              { value: 234, name: "论坛" },
-              { value: 135, name: "短信" },
-              { value: 1548, name: "其他" }
-            ]
+            data: mydata.mySource.data[1] 
           }
         ]
       };

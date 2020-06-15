@@ -70,6 +70,7 @@ import chartLine from "@/components/chartLine";
 import chartBar from "@/components/chartBar";
 import chartPie from "@/components/chartPie";
 import wordCloud from "@/components/wordCloud";
+import mydata from "@/data/data.js";
 export default {
   name: "globalScan",
   components: {
@@ -82,29 +83,9 @@ export default {
   data() {
     return {
       activeName: "first",
-      normTitle: ['今日总量', '较昨日', '本周总量', '较上周'],
-      normData: ['356', '92%', '1735', '19%'],
-      ranking:[{       // 诈骗模式排名
-        image: '/static/images/number1.png',
-        name: '微信中奖',
-        num: '26'
-      },{
-        image: '/static/images/number2.png',
-        name: '彩票中奖',
-        num: '24'
-      },{
-        image: '/static/images/number3.png',
-        name: '谎报车祸',
-        num: '13'
-      },{
-        image: '/static/images/number4.png',
-        name: '银行卡冻结',
-        num: '6'
-      },{
-        image: '/static/images/number5.png',
-        name: '论文发表',
-        num: '4'
-      }]
+      normTitle: mydata.normData.data[0],
+      normData: mydata.normData.data[1],
+      ranking: mydata.myRanking.data
     };
   },
   mounted() {},

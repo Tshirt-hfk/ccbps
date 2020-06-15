@@ -3,41 +3,15 @@
 </template>
 <script>
 import echarts from "echarts";
-import "echarts/map/js/china.js"; //
+import "echarts/map/js/china.js"; 
 import option from "./myMap-option.js";
-
+import mydata from "@/data/data.js";
 export default {
   name: "myMap",
   data() {
     return {
-      geoCoordMap: {
-        北京: [116.41667, 39.91667],
-        上海: [121.43333, 34.5],
-        广州: [113.23333, 23.16667],
-        杭州: [120.2, 30.26667],
-        重庆: [106.45, 29.56667],
-        青岛: [120.33333, 36.06667],
-        厦门: [118.1, 24.46667],
-        福州: [119.3, 26.08333],
-        兰州: [103.73333, 36.03333],
-        长沙: [113.0, 28.21667],
-        南京: [118.78333, 32.05],
-        海外: [130.41667, 36.91667]
-      },
-      rawData: [
-        ["北京", 5, 200],
-        ["上海", 10, 100],
-        ["广州", 100, 50],
-        ["杭州", 100, 20],
-        ["重庆", 100, 20],
-        ["青岛", 100, 20],
-        ["厦门", 10, 200],
-        ["福州", 100, 10],
-        ["兰州", 10, 105],
-        ["长沙", 100, 25],
-        ["南京", 10, 200],
-        ["海外", 10, 50]
-      ]
+      geoCoordMap: mydata.myMap.geoCoordMap,
+      rawData: mydata.myMap.rawData,
     };
   },
   //钩子函数  不了解的话 建议看看 vue的生命周期
@@ -55,7 +29,7 @@ export default {
             x: "35%",
             y: "0%",
             orient: "horizontal",
-            data: ["网络诈骗", "非法集资"]
+            data: mydata.myMap.title
           },
           series: []
         };
@@ -65,8 +39,8 @@ export default {
           var coord = myChart.convertToPixel("geo", geoCoord);
           idx += "";
           var inflationData = [
-            { name: "网络诈骗", value: dataItem[1] },
-            { name: "非法集资", value: dataItem[2] }
+            { name: mydata.myMap.title[0], value: dataItem[1] },
+            { name: mydata.myMap.title[1], value: dataItem[2] } 
           ];
           var total = dataItem[1] + dataItem[2];
           var title = {
@@ -116,7 +90,7 @@ export default {
               normal: {
                 color: function(params) {
                   // 柱状图每根柱子颜色
-                  var colorList = ["#fcae91", "#fb6a4a", "#cb181d"];
+                  var colorList = ["#fcae91", "#fb6a4a"];
                   return colorList[params.dataIndex];
                 }
               }

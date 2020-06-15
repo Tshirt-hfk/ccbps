@@ -4,6 +4,7 @@
 
 <script>
 import echarts from "echarts";
+import mydata from "@/data/data.js";
 export default {
   name: "chartBar",
   data() {
@@ -35,7 +36,7 @@ export default {
         xAxis: [
           {
             type: "category",
-            data: ["大庆", "武汉", "北京", "合肥", "苏州", "菏泽", "长沙"],
+            data: mydata.myBar.data[0],
             axisTick: {
               alignWithLabel: true
             }
@@ -51,7 +52,7 @@ export default {
             name: "网络诈骗",
             type: "bar",
             barWidth: "60%",
-            data: [10, 52, 200, 334, 390, 330, 220],
+            data: mydata.myBar.data[1],
             stack: 'a',
             color: "#fcae91"
           },
@@ -59,7 +60,7 @@ export default {
             name: "非法集资",
             type: "bar",
             barWidth: "60%",
-            data: [10, 52, 200, 334, 390, 330, 220],
+            data: mydata.myBar.data[2],
             stack: 'a',
             color: "#fb6a4a"
           }

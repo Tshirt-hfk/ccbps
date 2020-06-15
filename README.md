@@ -2,6 +2,10 @@
 
 > Cyberspace criminal behavior perception system
 
+# 数据配置
+
+> src/data/data.js
+
 ## Build Setup
 
 ``` bash

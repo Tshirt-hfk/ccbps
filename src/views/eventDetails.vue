@@ -47,9 +47,8 @@
 </template>
 
 <script>
-
 import echarts from 'echarts';
-
+import mydata from "@/data/data.js";
 export default {
     name: "eventDetails",
     watch:{
@@ -63,28 +62,7 @@ export default {
         }
     },
     data() {
-        return {
-            overviewData:[{
-                category: '诈骗类型',
-                name: '微信中奖'
-            },{
-                category: '地区',
-                name: '河北省 承德市'
-            },{
-                category: '涉案金额',
-                name: '55,000元'
-            },{
-                category: '来源',
-                name: '微信'
-            },{
-                category: '案发时间',
-                name: '2020/05/22 19:45:56'
-            },{
-                category: '涉案人数',
-                name: '3人'
-            }],
-            crimeStep: '1',
-        };
+        return mydata.eventDetails
     },
     mounted() {
         this.init();

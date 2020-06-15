@@ -6,19 +6,13 @@
 let echarts = require("echarts/lib/echarts");
 require("echarts-wordcloud");
 import "echarts/theme/macarons.js";
-
+import mydata from "@/data/data.js";
 export default {
   name: "wordCloud",
   data: () => ({
     word_cloud_view: null,
     word_cloud_options: {},
-    word_list: [
-      { name: "KFC", value: 10927 },
-      { name: "桂鱼", value: 8902 },
-      { name: "外婆家", value: 5902 },
-      { name: "汉堡", value: 2902 },
-      { name: "1921", value: 3902 }
-    ]
+    word_list:  mydata.myWord.data
   }),
   methods: {
     init_view_data() {

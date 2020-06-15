@@ -70,7 +70,7 @@
 </template>
 
 <script>
-
+import mydata from "@/data/data.js";
 export default {
     name: "internetFraud",
     watch:{
@@ -84,55 +84,7 @@ export default {
         }
     },
     data() {
-        return {
-            data: [{
-                id: 1,
-                label: '网络诈骗分类体系',
-                children: [{
-                    id: 2,
-                    label: '微信中奖',
-                    children: [{
-                    id: 3,
-                    label: '三级 1-1-1'
-                    }, {
-                    id: 4,
-                    label: '三级 1-1-2'
-                    }]
-                }, {
-                    id: 5,
-                    label: '彩票中奖',
-                    children: [{
-                        id: 6,
-                        label: '三级 1-2-1'
-                    }, {
-                        id: 7,
-                        label: '三级 1-2-2'
-                    }]
-                }, {
-                    id: 8,
-                    label: '二级 2-2'
-                }, {
-                    id: 9,
-                    label: '二级 2-3'
-                }]
-            }],
-            radio1: '近24小时',  // 筛选选项
-            radio2: '全部',
-            radio3: '5千元以下',
-            searchValue: '',    // 搜索框数据
-            currentPage: 1,
-            pagesize: 10,      // 每页条目数
-            applications: [],   // 所有数据
-            tableData: [],   // 目前列表数据
-            displayData: [{   // 当前页显示数据
-                id: 'ID43321432',
-                name: 'xxx诈骗事件',
-                field: '微信中奖',
-                source: '微信',
-                date: '2020-05-22 19:45:32',
-                money: '50000.00'
-            }],
-        };
+        return mydata.internetFraud;
     },
     mounted() {
         this.init();
