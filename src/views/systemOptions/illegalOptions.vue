@@ -15,7 +15,7 @@
                 <el-table-column prop="id" label="序号" width="150">
                     <template slot-scope="scope">{{ scope.row.id}}</template>
                 </el-table-column>
-                <el-table-column prop="name" label="规则名称" width="150">
+                <el-table-column prop="name" label="规则名称" width="200">
                     <template slot-scope="scope">{{ scope.row.name}}</template>
                 </el-table-column>
                 <el-table-column prop="regular" label="正则表达式" width="300">
@@ -27,7 +27,7 @@
                 <el-table-column align="right">
                     <template slot-scope="scope">
                     <el-button size="mini" type="danger" @click="deleteRule(scope.$index)">删除</el-button>
-                    <el-button size="mini" type="primary" @click="getTaskContent(scope.row.id)">编辑</el-button>
+                    <el-button size="mini" type="primary" @click="editRule(scope.row.id, scope.$index)">编辑</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -81,6 +81,26 @@
                 style="width: 300px; max-width: 550px;margin: 0 auto"> </el-pagination>
             </div>
         </div>
+        <el-dialog title="编辑模型规则" :visible.sync="editFlag" width="800px" top="30vh" center>
+            <el-form ref="form" :model="ruleForm" label-width="100px">
+                <el-form-item label="序号">
+                    <span>{{ruleForm.id}}</span>
+                </el-form-item>
+                <el-form-item label="规则名称">
+                    <el-input v-model="ruleForm.name" maxlength="20" show-word-limit></el-input>
+                </el-form-item>
+                <el-form-item label="正则表达式">
+                    <el-input type="textarea" v-model="ruleForm.regular" autosize></el-input>
+                </el-form-item>
+                <el-form-item label="权重">
+                    <el-input v-model="ruleForm.weight"></el-input>
+                </el-form-item>
+            </el-form>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="editFlag = false">返 回</el-button>
+                <el-button type="primary" @click="publishRule">提 交</el-button>
+            </span>
+        </el-dialog>
     </div>
 </template>
 
@@ -180,6 +200,27 @@ export default {
                     message: '已取消删除'
                 });          
                 });
+        },
+        editRule(idt, index){
+            this.editFlag = true;
+            for(var i = 0; i < this.ruleApplications.length; i++){
+                if(this.ruleApplications[i].id === idt){
+                    this.editIndex = i
+                    break;
+                }
+            }
+            this.ruleForm.id = this.ruleDisplayData[index].id;
+            this.ruleForm.name = this.ruleDisplayData[index].name;
+            this.ruleForm.regular = this.ruleDisplayData[index].regular;
+            this.ruleForm.weight = this.ruleDisplayData[index].weight;
+        },
+        publishRule(){
+            this.ruleApplications[this.editIndex].id = this.ruleForm.id;
+            this.ruleApplications[this.editIndex].name = this.ruleForm.name;
+            this.ruleApplications[this.editIndex].regular = this.ruleForm.regular;
+            this.ruleApplications[this.editIndex].weight = this.ruleForm.weight;
+            this.ruleRemoteMethod(this.ruleSearchValue);
+            this.editFlag = false;
         }
     }
 }
