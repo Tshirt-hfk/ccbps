@@ -168,7 +168,7 @@ export default {
     },
     getTaskContent(id) {
       this.$router.push({
-        path: "/eventDetails",
+        path: "/internetFraudEventDetails",
         query: { id: id }
       });
     }

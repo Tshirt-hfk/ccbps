@@ -1,7 +1,7 @@
 <template>
     <div class="ed-layout">
     <div class="ed-main">
-        <div class="ed-title">网络诈骗/案件详情</div>
+        <div class="ed-title">非法集资/案件详情</div>
         <div class="ed-main-title">承德市刘某微信诈骗事件</div>
         <div class="ed-main-event">
             <div class="ed-main-overview">
@@ -68,9 +68,9 @@
 
 <script>
 import echarts from 'echarts';
-import data from "@/data/internetFraudData.js";
+import data from "@/data/illegalFundData.js";
 export default {
-    name: "eventDetails",
+    name: "illegalfundEventDetails",
     data() {
         return {
             crimeStep: 1,

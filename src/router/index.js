@@ -31,7 +31,7 @@ export default new Router({
     {
       path: '/illegalfund',
       name: 'illegalFund',
-      component: () => import('../views/illegalFund')
+      component: () => import('../views/illegalFund'),
     },
     {
       path: '/gatheringcenter',
@@ -39,9 +39,14 @@ export default new Router({
       component: () => import('../views/gatheringCenter')
     },
     {
-      path: '/eventdetails',
-      name: 'eventDetails',
-      component: () => import('../views/eventDetails')
+      path: '/internetFraudEventDetails',
+      name: 'internetFraudEventDetails',
+      component: () => import('../views/internetFraudEventDetails')
+    },
+    {
+      path: '/illegalfundEventDetails',
+      name: 'illegalfundEventDetails',
+      component: () => import('../views/illegalfundEventDetails')
     },
     {
       path: '/systemoptions',
