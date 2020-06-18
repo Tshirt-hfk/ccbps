@@ -46,7 +46,25 @@ export default new Router({
     {
       path: '/systemoptions',
       name: 'systemOptions',
-      component: () => import('../views/systemOptions')
+      component: () => import('../views/systemOptions'),
+      redirect: '/systemoptions/internetOptions',
+          children: [
+            {
+              path: 'internetOptions',
+              name: 'internetOptions',
+              component: () => import('../views/systemOptions/internetOptions')
+            },
+            {
+              path: 'illegalOptions',
+              name: 'illegalOptions',
+              component: () => import('../views/systemOptions/illegalOptions')
+            },
+            {
+              path: 'userManagement',
+              name: 'userManagement',
+              component: () => import('../views/systemOptions/userManagement')
+            }
+          ]
     }
   ]
 })

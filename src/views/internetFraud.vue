@@ -3,7 +3,9 @@
     <div class="if-main">
       <div class="if-main-title">网络诈骗/案件概览</div>
       <div class="if-main-classification">
-        <el-tree :data="categories" default-expand-all></el-tree>
+        <el-scrollbar style="height:100%" >
+          <el-tree :data="categories" default-expand-all></el-tree>
+        </el-scrollbar>
       </div>
       <div class="if-main-event">
         <div class="if-main-radio">
@@ -78,7 +80,7 @@
 </template>
 
 <script>
-import data from "@/data/internetFraudData.js";
+import mydata from "@/data/data.js"
 export default {
   name: "internetFraud",
   watch: {
@@ -116,61 +118,7 @@ export default {
     }
   },
   data() {
-    return {
-      categories: [
-        {
-          id: 1,
-          label: "网络诈骗分类体系",
-          children: [
-            {
-              id: 2,
-              label: "微信中奖",
-              children: [
-                {
-                  id: 3,
-                  label: "三级 1-1-1"
-                },
-                {
-                  id: 4,
-                  label: "三级 1-1-2"
-                }
-              ]
-            },
-            {
-              id: 5,
-              label: "彩票中奖",
-              children: [
-                {
-                  id: 6,
-                  label: "三级 1-2-1"
-                },
-                {
-                  id: 7,
-                  label: "三级 1-2-2"
-                }
-              ]
-            },
-            {
-              id: 8,
-              label: "二级 2-2"
-            },
-            {
-              id: 9,
-              label: "二级 2-3"
-            }
-          ]
-        }
-      ],
-      radio1: "近24小时", // 筛选选项
-      radio2: "全部",
-      radio3: "5千元以下",
-      searchValue: "", // 搜索框数据
-      currentPage: 1,
-      pagesize: 10, // 每页条目数
-      applications: data.data, // 所有数据
-      tableData: [], // 目前列表数据
-      displayData: []
-    };
+    return mydata.internetFraud
   },
   mounted() {
     this.init();
@@ -267,9 +215,8 @@ export default {
   font-weight: bold;
 }
 .if-main-classification {
-  width: 200px;
-  border-right: solid 1px #409eff;
-  float: left;
+  width: 220px;
+  border-right: solid 2px #DCDFE6;
   position: absolute;
   top: 90px;
   bottom: 40px;
@@ -277,7 +224,7 @@ export default {
 }
 .if-main-event {
   width: 1000px;
-  margin-left: 250px;
+  margin-left: 260px;
 }
 .if-main-radio {
   width: 600px;
@@ -293,5 +240,12 @@ export default {
 .passed-page {
   width: 100%;
   margin-top: 25px;
+}
+</style>
+
+<style>
+.el-scrollbar__wrap
+{
+  overflow-x: hidden;
 }
 </style>

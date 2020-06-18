@@ -3,7 +3,9 @@
     <div class="if-main">
         <div class="if-main-title">非法集资/案件概览</div>
         <div class="if-main-classification">
-            <el-tree :data="data" default-expand-all></el-tree>
+            <el-scrollbar style="height:100%" >
+                <el-tree :data="categories" default-expand-all></el-tree>
+            </el-scrollbar>
         </div>
         <div class="if-main-event">
             <div class="if-main-radio">
@@ -138,8 +140,8 @@ export default {
   font-weight: bold;
 }
 .if-main-classification{
-    width: 200px;
-    border-right: solid 1px #409eff;
+    width: 220px;
+    border-right: solid 2px #DCDFE6;
     float: left;
     position: absolute;
     top: 90px;
@@ -148,7 +150,7 @@ export default {
 }
 .if-main-event{
     width: 1000px;
-    margin-left: 250px;
+    margin-left: 260px;
 }
 .if-main-radio{
     width: 600px;
@@ -164,5 +166,12 @@ export default {
 .passed-page{
   width: 100%;
   margin-top: 25px;
+}
+</style>
+
+<style>
+.el-scrollbar__wrap
+{
+  overflow-x: hidden;
 }
 </style>

@@ -26,7 +26,7 @@ export default {
     categories: [
         {
           id: 1,
-          label: "网络诈骗分类体系",
+          label: "非法集资分类体系",
           children: [
             {
               id: 2,
