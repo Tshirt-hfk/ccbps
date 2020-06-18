@@ -7,9 +7,29 @@
             <div class="ed-main-overview">
                 <div class="ed-main-subtitle">案件概览</div>
                 <el-card class="box-card" :body-style="{ padding: '15px' }" shadow="never">
-                    <div class="ed-main-overview-content" v-for="item in overviewData" :key="item">
-                        <span class="ed-main-overview-label">{{item.category}}:</span>
-                        <span class="ed-main-overview-name">{{item.name}}</span>
+                    <div class="ed-main-overview-content">
+                        <span class="ed-main-overview-label">诈骗类型:</span>
+                        <span class="ed-main-overview-name">{{item.type}}</span>
+                    </div>
+                    <div class="ed-main-overview-content">
+                        <span class="ed-main-overview-label">地区:</span>
+                        <span class="ed-main-overview-name">{{item.pos}}</span>
+                    </div>
+                    <div class="ed-main-overview-content">
+                        <span class="ed-main-overview-label">涉案金额:</span>
+                        <span class="ed-main-overview-name">{{item.money}}</span>
+                    </div>
+                    <div class="ed-main-overview-content">
+                        <span class="ed-main-overview-label">来源:</span>
+                        <span class="ed-main-overview-name">{{item.source}}</span>
+                    </div>
+                    <div class="ed-main-overview-content">
+                        <span class="ed-main-overview-label">案发时间:</span>
+                        <span class="ed-main-overview-name">{{item.date | handleTime}}</span>
+                    </div>
+                    <div class="ed-main-overview-content">
+                        <span class="ed-main-overview-label">涉案人数:</span>
+                        <span class="ed-main-overview-name">{{item.num}}</span>
                     </div>
                 </el-card>
             </div>
@@ -48,49 +68,48 @@
 
 <script>
 import echarts from 'echarts';
-import mydata from "@/data/data.js";
+import data from "@/data/internetFraudData.js";
 export default {
     name: "eventDetails",
-    watch:{
-        searchValue:{
-        handler(n, o){
-            clearTimeout(this.timeout);
-            this.timeout = setTimeout(() => {
-            this.remoteMethod(n);
-            }, 300);
-        }
-        }
-    },
     data() {
-        return mydata.eventDetails
+        return {
+            crimeStep: 1,
+            id: "ID43321433",
+            data: data.data,
+            item: data.data[0],
+        }
     },
     mounted() {
         this.init();
     },
     methods: {
         init(){
-            this.applications = this.displayData
-            this.tableData = this.displayData
-        },
-        handleCurrentChange(val) {
-            this.currentPage = val;
-            let indexleft = val - 1;
-            let size = this.pagesize;
-            this.displayData = this.tableData.slice(indexleft*size, val*size);
-        },
-        // filter
-        remoteMethod(query) {
-            if (query !== "") {
-                this.tableData = this.applications.filter(entry => {
-                return entry.source.toLowerCase().indexOf(query.toLowerCase()) > -1;
-                });
-                this.displayData = this.tableData.slice(0, this.pagesize);
-            } else {
-                this.tableData = this.applications;
-                this.displayData = this.tableData.slice(0, this.pagesize);
+            this.id = this.$route.query.id
+            for (var item of this.data){
+                if (item.id==this.id){
+                    this.item = item
+                    return;
+                }
             }
         },
+    },
+    filters: {
+    handleTime(timestamp) {
+      var date = new Date(timestamp);
+      var y = date.getFullYear();
+      var m = date.getMonth() + 1;
+      var d = date.getDate();
+      return (
+        y +
+        "-" +
+        (m < 10 ? "0" + m : m) +
+        "-" +
+        (d < 10 ? "0" + d : d) +
+        " " +
+        date.toTimeString().substr(0, 8)
+      );
     }
+  }
 }
 </script>
 

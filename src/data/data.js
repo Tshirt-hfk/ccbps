@@ -84,55 +84,6 @@ export default {
             { name: "1921", value: 3902 }
         ]
     },
-    internetFraud: {  // 网络诈骗数据
-        data: [{
-            id: 1,
-            label: '网络诈骗分类体系',
-            children: [{
-                id: 2,
-                label: '微信中奖',
-                children: [{
-                    id: 3,
-                    label: '三级 1-1-1'
-                }, {
-                    id: 4,
-                    label: '三级 1-1-2'
-                }]
-            }, {
-                id: 5,
-                label: '彩票中奖',
-                children: [{
-                    id: 6,
-                    label: '三级 1-2-1'
-                }, {
-                    id: 7,
-                    label: '三级 1-2-2'
-                }]
-            }, {
-                id: 8,
-                label: '二级 2-2'
-            }, {
-                id: 9,
-                label: '二级 2-3'
-            }]
-        }],
-        radio1: '近24小时',  // 筛选选项
-        radio2: '全部',
-        radio3: '5千元以下',
-        searchValue: '',    // 搜索框数据
-        currentPage: 1,
-        pagesize: 10,      // 每页条目数
-        applications: [],   // 所有数据
-        tableData: [],   // 目前列表数据
-        displayData: [{   // 当前页显示数据
-            id: 'ID43321432',
-            name: 'xxx诈骗事件',
-            field: '微信中奖',
-            source: '微信',
-            date: '2020-05-22 19:45:32',
-            money: '50000.00'
-        }],
-    },
     illegalFund: {  // 非法集资数据
         data: [{
             id: 1,
@@ -292,27 +243,5 @@ export default {
         }],
         releaseValue: false,     // 模型是否发布
         ruleValue: false,  // 模型规则是否启用
-    },
-    eventDetails: {  // 时间细节数据
-        overviewData:[{
-            category: '诈骗类型',
-            name: '微信中奖'
-        },{
-            category: '地区',
-            name: '河北省 承德市'
-        },{
-            category: '涉案金额',
-            name: '55,000元'
-        },{
-            category: '来源',
-            name: '微信'
-        },{
-            category: '案发时间',
-            name: '2020/05/22 19:45:56'
-        },{
-            category: '涉案人数',
-            name: '3人'
-        }],
-        crimeStep: '1',
     }
 }
