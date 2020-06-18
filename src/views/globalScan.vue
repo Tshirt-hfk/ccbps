@@ -13,10 +13,19 @@
         <div>
           <div class="gc-main-left">
             <div class="gc-main-left-norm">
-              <div class='gc-main-left-normTitle' v-for='title in data.normData.data[0]' :key='title'>
-                {{title}}
+              <div class='gc-main-left-normTitle'>
+                今日总量
               </div>
-              <div class='gc-main-left-normData' v-for='item in data.normData.data[1]' :key='item'>
+              <div class='gc-main-left-normTitle'>
+                较昨日
+              </div>
+              <div class='gc-main-left-normTitle'>
+                本周总量
+              </div>
+              <div class='gc-main-left-normTitle'>
+                较上周
+              </div>
+              <div class='gc-main-left-normData' v-for='item in data.normData.data' :key='item'>
                 {{item}}
               </div>
             </div>
@@ -64,7 +73,7 @@
         <div>
           <div class="one-three">
             <div class="one-three-title">非法集资模式统计</div>
-            <div class="one-three-ranking" v-for="item in data.myRanking.data" :key="item.name">
+            <div class="one-three-ranking" v-for="item in data.myRanking1.data" :key="item.name">
                 <el-col :span="4">
                   <img class="one-three-icon" :src="item.image" />
                 </el-col>
@@ -78,11 +87,11 @@
           </div>
           <div class="one-three">
             <div class="one-three-title">非法集资来源占比</div>
-            <chartPie :data="data.mySource.data"></chartPie>
+            <chartPie :data="data.mySource1.data"></chartPie>
           </div>
           <div class="one-three">
             <div class="one-three-title">非法集资热词</div>
-            <wordCloud :word_list="data.myRanking.data"></wordCloud>
+            <wordCloud :word_list="data.myRanking1.data"></wordCloud>
           </div>
           <div class="clear"></div>
         </div>
