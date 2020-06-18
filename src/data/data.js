@@ -59,26 +59,26 @@ export default {
         ruleSearchValue: '',    // 规则配置搜索框数据
         ruleCurrentPage: 1,    // 规则配置当前页
         rulePagesize: 10,      // 规则配置每页条目数
-        ruleApplications: [],   // 规则配置所有数据
-        ruleTableData: [],   // 规则配置目前列表数据
-        ruleDisplayData: [{   // 规则配置当前页显示数据
+        ruleApplications: [{   // 规则配置所有数据
             id: 'ID43321432',
             name: '微信',
             regular: '//*[@id="cnblogs_post_body"]/p[39]/',
             weight: '50000.00'
-        }],
+        }], 
+        ruleTableData: [],   // 规则配置目前列表数据
+        ruleDisplayData: [], // 规则配置当前页显示数据
         // 模型
         modelSearchValue: '',    // 模型搜索框数据
         modelCurrentPage: 1,    // 模型当前页
         modelPagesize: 10,      // 模型每页条目数
-        modelApplications: [],   // 模型所有数据
-        modelTableData: [],   // 模型目前列表数据
-        modelDisplayData: [{   // 模型当前页显示数据
+        modelApplications: [{  // 模型所有数据
             id: 'ID43321432',
             name: '微信',
             dataset: 'dataset-2020-05-06.zip',
             trainingTime: '2020-05-22 19:45:32'
-        }],
+        }],   
+        modelTableData: [],   // 模型目前列表数据
+        modelDisplayData: [],  // 模型当前页显示数据
         releaseValue: false,     // 模型是否发布
         ruleValue: false,  // 模型规则是否启用
     },
@@ -92,26 +92,26 @@ export default {
         ruleSearchValue: '',    // 规则配置搜索框数据
         ruleCurrentPage: 1,    // 规则配置当前页
         rulePagesize: 10,      // 规则配置每页条目数
-        ruleApplications: [],   // 规则配置所有数据
-        ruleTableData: [],   // 规则配置目前列表数据
-        ruleDisplayData: [{   // 规则配置当前页显示数据
+        ruleApplications: [{   // 规则配置所有数据
             id: 'ID43321432',
             name: '微信',
             regular: '//*[@id="cnblogs_post_body"]/p[39]/',
             weight: '50000.00'
-        }],
+        }], 
+        ruleTableData: [],   // 规则配置目前列表数据
+        ruleDisplayData: [],  // 规则配置当前页显示数据
         // 模型
         modelSearchValue: '',    // 模型搜索框数据
         modelCurrentPage: 1,    // 模型当前页
         modelPagesize: 10,      // 模型每页条目数
-        modelApplications: [],   // 模型所有数据
-        modelTableData: [],   // 模型目前列表数据
-        modelDisplayData: [{   // 模型当前页显示数据
+        modelApplications: [{   // 模型所有数据
             id: 'ID43321432',
             name: '微信',
             dataset: 'dataset-2020-05-06.zip',
             trainingTime: '2020-05-22 19:45:32'
-        }],
+        }],   
+        modelTableData: [],   // 模型目前列表数据
+        modelDisplayData: [], // 模型当前页显示数据
         releaseValue: false,     // 模型是否发布
         ruleValue: false,  // 模型规则是否启用
     }

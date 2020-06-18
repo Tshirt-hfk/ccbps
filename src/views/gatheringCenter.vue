@@ -45,7 +45,7 @@
                     </el-table-column>
                     <el-table-column align="right">
                         <template slot-scope="scope">
-                        <el-button size="mini" type="danger" @click="getTaskContent(scope.row.id)">删除</el-button>
+                        <el-button size="mini" type="danger" @click="deleteSource(scope.$index)">删除</el-button>
                         <el-button size="mini" type="primary" @click="getTaskContent(scope.row.id)">编辑</el-button>
                         </template>
                     </el-table-column>
@@ -185,6 +185,25 @@ export default {
                 this.displayData = this.tableData.slice(0, this.pagesize);
             }
         },
+        deleteSource(index){
+            this.$confirm('此操作将永久删除该数据源, 是否继续?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                this.applications.splice(index, 1);
+                this.remoteMethod(this.searchValue);
+                this.$message({
+                    type: 'success',
+                    message: '删除成功!'
+                });
+            }).catch(() => {
+                this.$message({
+                    type: 'info',
+                    message: '已取消删除'
+                });          
+                });
+        }
     }
 }
 </script>

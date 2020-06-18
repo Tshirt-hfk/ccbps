@@ -26,7 +26,7 @@
                 </el-table-column>
                 <el-table-column align="right">
                     <template slot-scope="scope">
-                    <el-button size="mini" type="danger" @click="getTaskContent(scope.row.id)">删除</el-button>
+                    <el-button size="mini" type="danger" @click="deleteRule(scope.$index)">删除</el-button>
                     <el-button size="mini" type="primary" @click="getTaskContent(scope.row.id)">编辑</el-button>
                     </template>
                 </el-table-column>
@@ -70,7 +70,7 @@
                 </el-table-column>
                 <el-table-column align="right">
                     <template slot-scope="scope">
-                    <el-button size="mini" type="danger" @click="getTaskContent(scope.row.id)">删除</el-button>
+                    <el-button size="mini" type="danger" @click="deleteModel(scope.$index)">删除</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -114,10 +114,8 @@ export default {
     },
     methods: {
         init(){
-            this.ruleApplications = this.ruleDisplayData
-            this.ruleTableData = this.ruleDisplayData
-            this.modelApplications = this.modelDisplayData
-            this.modelTableData = this.modelDisplayData
+            this.modelRemoteMethod("");
+            this.ruleRemoteMethod("");
         },
         handleRuleCurrentChange(val) {
             this.ruleCurrentPage = val;
@@ -127,15 +125,10 @@ export default {
         },
         // filter
         ruleRemoteMethod(query) {
-            if (query !== "") {
-                this.ruleTableData = this.ruleApplications.filter(entry => {
+            this.ruleTableData = this.ruleApplications.filter(entry => {
                 return entry.name.toLowerCase().indexOf(query.toLowerCase()) > -1;
-                });
-                this.ruleDisplayData = this.ruleTableData.slice(0, this.rulePagesize);
-            } else {
-                this.ruleTableData = this.ruleApplications;
-                this.ruleDisplayData = this.ruleTableData.slice(0, this.rulePagesize);
-            }
+            });
+            this.ruleDisplayData = this.ruleTableData.slice(0, this.rulePagesize);
         },
         handleModelCurrentChange(val) {
             this.modelCurrentPage = val;
@@ -145,16 +138,49 @@ export default {
         },
         // filter
         modelRemoteMethod(query) {
-            if (query !== "") {
-                this.modelTableData = this.modelApplications.filter(entry => {
+            this.modelTableData = this.modelApplications.filter(entry => {
                 return entry.name.toLowerCase().indexOf(query.toLowerCase()) > -1;
-                });
-                this.modelDisplayData = this.modelTableData.slice(0, this.modelPagesize);
-            } else {
-                this.modelTableData = this.modelApplications;
-                this.modelDisplayData = this.modelTableData.slice(0, this.modelPagesize);
-            }
+            });
+            this.modelDisplayData = this.modelTableData.slice(0, this.modelPagesize);
         },
+        deleteRule(index){
+            this.$confirm('此操作将永久删除该规则, 是否继续?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                this.ruleApplications.splice(index, 1);
+                this.ruleRemoteMethod(this.ruleSearchValue);
+                this.$message({
+                    type: 'success',
+                    message: '删除成功!'
+                });
+            }).catch(() => {
+                this.$message({
+                    type: 'info',
+                    message: '已取消删除'
+                });          
+                });
+        },
+        deleteModel(index){
+            this.$confirm('此操作将永久删除该模型, 是否继续?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                this.modelApplications.splice(index, 1);
+                this.modelRemoteMethod(this.modelSearchValue);
+                this.$message({
+                    type: 'success',
+                    message: '删除成功!'
+                });
+            }).catch(() => {
+                this.$message({
+                    type: 'info',
+                    message: '已取消删除'
+                });          
+                });
+        }
     }
 }
 </script>
