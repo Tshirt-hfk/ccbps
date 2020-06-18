@@ -13,49 +13,76 @@
         <div>
           <div class="gc-main-left">
             <div class="gc-main-left-norm">
-              <div class='gc-main-left-normTitle' v-for='title in normTitle' :key='title'>
+              <div class='gc-main-left-normTitle' v-for='title in data.normData.data[0]' :key='title'>
                 {{title}}
               </div>
-              <div class='gc-main-left-normData' v-for='data in normData' :key='data'>
-                {{data}}
+              <div class='gc-main-left-normData' v-for='item in data.normData.data[1]' :key='item'>
+                {{item}}
               </div>
             </div>
-            <myMap></myMap>
+            <myMap :geoCoordMap="data.myMap.geoCoordMap"
+            :rawData="data.myMap.rawData"
+            :title="data.myMap.title"></myMap>
           </div>
           <div class="gc-main-right">
             <div class="smooth-line">
               <div class='gc-main-right-title' style="margin-bottom: 20px">近一周趋势</div>
-              <chartLine></chartLine>
+              <chartLine :data="data.myLine.data"></chartLine>
             </div>
             <div>
               <div class='gc-main-right-title'>高发区域排行</div>
-              <chartBar></chartBar>
+              <chartBar :data="data.myBar.data"></chartBar>
             </div>
             <div class="clear"></div>
           </div>
         </div>
         <div>
           <div class="one-three">
-            <div class="one-three-title">诈骗模式统计</div>
-            <div class="one-three-ranking" v-for="data in ranking" :key='data.name'>
+            <div class="one-three-title">网络诈骗模式统计</div>
+            <div class="one-three-ranking" v-for="item in data.myRanking.data" :key="item.name">
                 <el-col :span="4">
-                  <img class="one-three-icon" :src="data.image" />
+                  <img class="one-three-icon" :src="item.image" />
                 </el-col>
                 <el-col :span="12">
-                  <div class="line-center">{{data.name}}</div>
+                  <div class="line-center">{{item.name}}</div>
                 </el-col>
                 <el-col :span="8">
-                  <div class="line-center">{{data.num}}</div>
+                  <div class="line-center">{{item.value}}</div>
                 </el-col>
             </div>
           </div>
           <div class="one-three">
-            <div class="one-three-title">来源占比</div>
-            <chartPie></chartPie>
+            <div class="one-three-title">网络诈骗来源占比</div>
+            <chartPie :data="data.mySource.data"></chartPie>
           </div>
           <div class="one-three">
-            <div class="one-three-title">热词</div>
-            <wordCloud></wordCloud>
+            <div class="one-three-title">网络诈骗热词</div>
+            <wordCloud :word_list="data.myRanking.data"></wordCloud>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div>
+          <div class="one-three">
+            <div class="one-three-title">非法集资模式统计</div>
+            <div class="one-three-ranking" v-for="item in data.myRanking.data" :key="item.name">
+                <el-col :span="4">
+                  <img class="one-three-icon" :src="item.image" />
+                </el-col>
+                <el-col :span="12">
+                  <div class="line-center">{{item.name}}</div>
+                </el-col>
+                <el-col :span="8">
+                  <div class="line-center">{{item.value}}</div>
+                </el-col>
+            </div>
+          </div>
+          <div class="one-three">
+            <div class="one-three-title">非法集资来源占比</div>
+            <chartPie :data="data.mySource.data"></chartPie>
+          </div>
+          <div class="one-three">
+            <div class="one-three-title">非法集资热词</div>
+            <wordCloud :word_list="data.myRanking.data"></wordCloud>
           </div>
           <div class="clear"></div>
         </div>
@@ -70,7 +97,7 @@ import chartLine from "@/components/chartLine";
 import chartBar from "@/components/chartBar";
 import chartPie from "@/components/chartPie";
 import wordCloud from "@/components/wordCloud";
-import mydata from "@/data/data.js";
+import data from "@/data/globalScanData.js";
 export default {
   name: "globalScan",
   components: {
@@ -83,9 +110,7 @@ export default {
   data() {
     return {
       activeName: "first",
-      normTitle: mydata.normData.data[0],
-      normData: mydata.normData.data[1],
-      ranking: mydata.myRanking.data
+      data: data
     };
   },
   mounted() {},

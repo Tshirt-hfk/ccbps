@@ -7,6 +7,7 @@ import echarts from "echarts";
 import mydata from "@/data/data.js";
 export default {
   name: "chartPie",
+  props: ["data"],
   data() {
     return {
       chartPie: null
@@ -26,7 +27,7 @@ export default {
         legend: {
           orient: "vertical",
           left: 320,
-          data: mydata.mySource.data[0]
+          data: this.data[0]
         },
         series: [
           {
@@ -48,7 +49,7 @@ export default {
             labelLine: {
               show: false
             },
-            data: mydata.mySource.data[1] 
+            data: this.data[1] 
           }
         ]
       };

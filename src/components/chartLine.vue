@@ -4,9 +4,9 @@
 
 <script>
 import echarts from "echarts";
-import mydata from "@/data/data.js";
 export default {
   name: "chartLine",
+  props: ["data"],
   data() {
     return {
       chartLine: null
@@ -37,7 +37,7 @@ export default {
         series: [
           {
             name: '网络诈骗',
-            data: mydata.myLine.data[0],
+            data: this.data[0],
             type: "line",
             areaStyle: {},
             smooth: true,
@@ -45,7 +45,7 @@ export default {
           },
           {
             name: '非法集资',
-            data: mydata.myLine.data[1],
+            data: this.data[1],
             type: "line",
             areaStyle: {},
             smooth: true,
