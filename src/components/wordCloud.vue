@@ -1,5 +1,5 @@
 <template>
-  <div id="word_cloud_view_id" class="wordCloud"></div>
+  <div ref="word_cloud_view" class="wordCloud"></div>
 </template>
 
 <script>
@@ -9,14 +9,14 @@ import "echarts/theme/macarons.js";
 import mydata from "@/data/data.js";
 export default {
   name: "wordCloud",
+  props: ["word_list"],
   data: () => ({
     word_cloud_view: null,
     word_cloud_options: {},
-    word_list:  mydata.myWord.data
   }),
   methods: {
     init_view_data() {
-      this.word_cloud_view = echarts.init(document.getElementById("word_cloud_view_id"), "macarons");
+      this.word_cloud_view = echarts.init(this.$refs.word_cloud_view, "macarons");
       let word_cloud_series = [
         {
           type: "wordCloud",

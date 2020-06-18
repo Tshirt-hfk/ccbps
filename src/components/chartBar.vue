@@ -4,9 +4,9 @@
 
 <script>
 import echarts from "echarts";
-import mydata from "@/data/data.js";
 export default {
   name: "chartBar",
+  props: ["data"],
   data() {
     return {
       chartBar: null
@@ -36,7 +36,7 @@ export default {
         xAxis: [
           {
             type: "category",
-            data: mydata.myBar.data[0],
+            data: this.data[0],
             axisTick: {
               alignWithLabel: true
             }
@@ -52,7 +52,7 @@ export default {
             name: "网络诈骗",
             type: "bar",
             barWidth: "60%",
-            data: mydata.myBar.data[1],
+            data: this.data[1],
             stack: 'a',
             color: "#fcae91"
           },
@@ -60,7 +60,7 @@ export default {
             name: "非法集资",
             type: "bar",
             barWidth: "60%",
-            data: mydata.myBar.data[2],
+            data: this.data[2],
             stack: 'a',
             color: "#fb6a4a"
           }

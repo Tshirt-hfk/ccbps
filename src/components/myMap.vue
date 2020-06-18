@@ -3,17 +3,11 @@
 </template>
 <script>
 import echarts from "echarts";
-import "echarts/map/js/china.js"; 
+import "echarts/map/js/china.js";
 import option from "./myMap-option.js";
-import mydata from "@/data/data.js";
 export default {
   name: "myMap",
-  data() {
-    return {
-      geoCoordMap: mydata.myMap.geoCoordMap,
-      rawData: mydata.myMap.rawData,
-    };
-  },
+  props: ["geoCoordMap", "rawData", "title"],
   //钩子函数  不了解的话 建议看看 vue的生命周期
   mounted() {
     this.mapEchartsInit();
@@ -29,7 +23,7 @@ export default {
             x: "35%",
             y: "0%",
             orient: "horizontal",
-            data: mydata.myMap.title
+            data: this.title
           },
           series: []
         };
@@ -39,8 +33,8 @@ export default {
           var coord = myChart.convertToPixel("geo", geoCoord);
           idx += "";
           var inflationData = [
-            { name: mydata.myMap.title[0], value: dataItem[1] },
-            { name: mydata.myMap.title[1], value: dataItem[2] } 
+            { name: this.title[0], value: dataItem[1] },
+            { name: this.title[1], value: dataItem[2] }
           ];
           var total = dataItem[1] + dataItem[2];
           var title = {
@@ -82,7 +76,7 @@ export default {
               }
             },
             radius:
-              total > 50 ? "4%" : total > 40 ? "3%" : total > 30 ? "2%" : "1%",
+              (total/50).toString()+"%",
             center: coord,
             data: inflationData,
             z: 100,
