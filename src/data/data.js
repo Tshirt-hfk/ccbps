@@ -34,6 +34,15 @@ export default {
         }],
     },
     gatheringCenter: {  // 采集中心设置
+        editFlag: false,   // 编辑框
+        editIndex: 0,
+        sourceForm: {
+            id: '',
+            source: '',
+            address: '',
+            xpath: '',
+            weight: ''
+        },
         radio1: '近24小时',  // 筛选选项
         radio2: '全部',
         searchValue: '',    // 搜索框数据
@@ -56,6 +65,14 @@ export default {
         radio2: '全部',
         radio3: '5千元以下',
         //  规则配置
+        editFlag: false,   // 编辑框
+        editIndex: 0,
+        ruleForm: {
+            id: '',
+            name: '',
+            regular: '',
+            weight: ''
+        },
         ruleSearchValue: '',    // 规则配置搜索框数据
         ruleCurrentPage: 1,    // 规则配置当前页
         rulePagesize: 10,      // 规则配置每页条目数
@@ -89,6 +106,14 @@ export default {
         radio2: '全部',
         radio3: '5千元以下',
         //  规则配置
+        editFlag: false,   // 编辑框
+        editIndex: 0,
+        ruleForm: {
+            id: '',
+            name: '',
+            regular: '',
+            weight: ''
+        },
         ruleSearchValue: '',    // 规则配置搜索框数据
         ruleCurrentPage: 1,    // 规则配置当前页
         rulePagesize: 10,      // 规则配置每页条目数

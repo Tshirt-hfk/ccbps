@@ -46,7 +46,7 @@
                     <el-table-column align="right">
                         <template slot-scope="scope">
                         <el-button size="mini" type="danger" @click="deleteSource(scope.$index)">删除</el-button>
-                        <el-button size="mini" type="primary" @click="getTaskContent(scope.row.id)">编辑</el-button>
+                        <el-button size="mini" type="primary" @click="editSource(scope.row.id, scope.$index)">编辑</el-button>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -58,6 +58,29 @@
                 </div>
             </div>
         </div>
+        <el-dialog title="编辑数据源" :visible.sync="editFlag" width="800px" top="30vh" center>
+            <el-form ref="form" :model="sourceForm" label-width="100px">
+                <el-form-item label="序号">
+                    <span>{{sourceForm.id}}</span>
+                </el-form-item>
+                <el-form-item label="数据源">
+                    <el-input v-model="sourceForm.source"></el-input>
+                </el-form-item>
+                <el-form-item label="地址">
+                    <el-input v-model="sourceForm.address"></el-input>
+                </el-form-item>
+                <el-form-item label="xpath">
+                    <el-input v-model="sourceForm.xpath" autosize></el-input>
+                </el-form-item>
+                <el-form-item label="权重">
+                    <el-input v-model="sourceForm.weight"></el-input>
+                </el-form-item>
+            </el-form>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="editFlag = false">返 回</el-button>
+                <el-button type="primary" @click="publishSource">提 交</el-button>
+            </span>
+        </el-dialog>
     </div>
     </div>
 </template>
@@ -175,15 +198,10 @@ export default {
         },
         // filter
         remoteMethod(query) {
-            if (query !== "") {
-                this.tableData = this.applications.filter(entry => {
+            this.tableData = this.applications.filter(entry => {
                 return entry.source.toLowerCase().indexOf(query.toLowerCase()) > -1;
-                });
-                this.displayData = this.tableData.slice(0, this.pagesize);
-            } else {
-                this.tableData = this.applications;
-                this.displayData = this.tableData.slice(0, this.pagesize);
-            }
+            });
+            this.displayData = this.tableData.slice(0, this.pagesize);
         },
         deleteSource(index){
             this.$confirm('此操作将永久删除该数据源, 是否继续?', '提示', {
@@ -203,6 +221,29 @@ export default {
                     message: '已取消删除'
                 });          
                 });
+        },
+        editSource(idt, index){
+            this.editFlag = true;
+            for(var i = 0; i < this.applications.length; i++){
+                if(this.applications[i].id === idt){
+                    this.editIndex = i
+                    break;
+                }
+            }
+            this.sourceForm.id = this.displayData[index].id;
+            this.sourceForm.source = this.displayData[index].source;
+            this.sourceForm.address = this.displayData[index].address;
+            this.sourceForm.xpath = this.displayData[index].xpath;
+            this.sourceForm.weight = this.displayData[index].weight;
+        },
+        publishSource(){
+            this.applications[this.editIndex].id = this.sourceForm.id;
+            this.applications[this.editIndex].source = this.sourceForm.source;
+            this.applications[this.editIndex].address = this.sourceForm.address;
+            this.applications[this.editIndex].xpath = this.sourceForm.xpath;
+            this.applications[this.editIndex].weight = this.sourceForm.weight;
+            this.remoteMethod(this.searchValue);
+            this.editFlag = false;
         }
     }
 }
