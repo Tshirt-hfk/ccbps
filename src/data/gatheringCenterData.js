@@ -1,4 +1,4 @@
-export default {
+export default {  // 采集中心
     lineData: {
         legend: ['微信', '微博', '新闻'],
         color: ['#8AE09F', '#c23531', '#6e7074'],
@@ -37,7 +37,7 @@ export default {
             weight: "50000.00"
         }
     ],
-    allApplications: [
+    allApplications: [    //  全量数据
         {
             // 所有数据
             id: "ID43321432",
