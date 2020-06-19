@@ -7,10 +7,17 @@ import "echarts/map/js/china.js";
 import option from "./myMap-option.js";
 export default {
   name: "myMap",
-  props: ["geoCoordMap", "rawData", "title"],
+  props: ["geoCoordMap", "rawData", "title", "index"],
   //钩子函数  不了解的话 建议看看 vue的生命周期
   mounted() {
     this.mapEchartsInit();
+  },
+  watch: {
+    index: {
+      handler(n, o) {
+        this.mapEchartsInit();
+      }
+    }
   },
   methods: {
     mapEchartsInit() {
@@ -23,7 +30,7 @@ export default {
             x: "35%",
             y: "0%",
             orient: "horizontal",
-            data: this.title
+            data: this.title.slice(this.index[0], this.index[1])
           },
           series: []
         };
@@ -32,11 +39,12 @@ export default {
           var geoCoord = this.geoCoordMap[dataItem[0]];
           var coord = myChart.convertToPixel("geo", geoCoord);
           idx += "";
-          var inflationData = [
-            { name: this.title[0], value: dataItem[1] },
-            { name: this.title[1], value: dataItem[2] }
-          ];
-          var total = dataItem[1] + dataItem[2];
+          var  inflationData = []
+          var total = 0;
+          for (var i=0;i<this.index[1]-this.index[0];i++){
+            inflationData.push({name: this.title[this.index[0]+i], value: dataItem[i+this.index[0]+1]})
+            total = total + dataItem[i+this.index[0]+1]
+          }
           var title = {
             text: dataItem[0],
             textStyle: {
@@ -82,9 +90,9 @@ export default {
             z: 100,
             itemStyle: {
               normal: {
-                color: function(params) {
+                color: (params) => {
                   // 柱状图每根柱子颜色
-                  var colorList = ["#fcae91", "#fb6a4a"];
+                  var colorList = ["#fcae91", "#fb6a4a"].slice(this.index[0], this.index[1]);
                   return colorList[params.dataIndex];
                 }
               }

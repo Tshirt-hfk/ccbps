@@ -31,7 +31,8 @@
             </div>
             <myMap :geoCoordMap="data.myMap.geoCoordMap"
             :rawData="data.myMap.rawData"
-            :title="data.myMap.title"></myMap>
+            :title="data.myMap.title"
+            :index="index"></myMap>
           </div>
           <div class="gc-main-right">
             <div class="smooth-line">
@@ -119,13 +120,22 @@ export default {
   data() {
     return {
       activeName: "first",
-      data: data
+      data: data,
+      index: [0, 2]
     };
   },
   mounted() {},
   methods: {
     handleClick(tab, event) {
-      console.log(tab, event);
+      var a,b;
+      if (this.activeName=="first"){
+        a=0,b=2;
+      }else if (this.activeName=="second"){
+        a=0,b=1;
+      }else if (this.activeName=="third"){
+        a=1,b=2;
+      }
+      this.index = [a, b]
     }
   }
 };
