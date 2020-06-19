@@ -46,15 +46,15 @@
                 </el-card>
                 <el-card class="box-card-small" :body-style="{ padding: '15px' }" style="float:left;margin-right: 25px">
                     <div class="ed-main-details-title">涉案组织</div>
-                    <span class="ed-main-details-content">主要描述诈骗主题信息，具体包括组织成员、组织人员数量、组织注册地等</span>
+                    <span class="ed-main-details-content">{{item.origination}}</span>
                 </el-card>
                 <el-card class="box-card-small" :body-style="{ padding: '15px' }">
                     <div class="ed-main-details-title">组织人员</div>
-                    <span class="ed-main-details-content">列出涉及的组织成员列表，字段包括、序号、姓名、涉及金额、被害人等</span>
+                    <span class="ed-main-details-content">{{item.orMember}}</span>
                 </el-card>
                 <el-card class="box-card-small" :body-style="{ padding: '15px' }" style="float:left;margin-right: 25px">
                     <div class="ed-main-details-title">被害人员</div>
-                    <span class="ed-main-details-content">组织诈骗人员清单，字段包括、序号、姓名、涉及金额、被害人等</span>
+                    <span class="ed-main-details-content">{{item.hurtedMember}}</span>
                 </el-card>
                 <el-card class="box-card-small" :body-style="{ padding: '15px' }">
                     <div class="ed-main-details-title">资金流向</div>
