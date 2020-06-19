@@ -56,10 +56,6 @@
                     <div class="ed-main-details-title">被害人员</div>
                     <span class="ed-main-details-content">{{item.hurtedMember}}</span>
                 </el-card>
-                <el-card class="box-card-small" :body-style="{ padding: '15px' }">
-                    <div class="ed-main-details-title">资金流向</div>
-                    <span class="ed-main-details-content">采用拓扑图，绘制人员关系，边上表明涉及的诈骗金额</span>
-                </el-card>
             </div>
         </div>
     </div>
