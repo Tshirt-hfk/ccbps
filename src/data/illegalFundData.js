@@ -83,10 +83,6 @@ export default {
       id: 1,
       label: "非法集资分类体系",
       children: [
-        {
-          id: 2,
-          label: "仿冒身份欺诈",
-          children: [
             {
               id: 2,
               label: "“高收益”投资非法集资",
@@ -188,6 +184,4 @@ export default {
           ]
         }
       ]
-    }
-  ],
 }

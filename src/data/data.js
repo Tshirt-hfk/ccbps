@@ -22,16 +22,9 @@ export default {
         searchValue: '',    // 搜索框数据
         currentPage: 1,
         pagesize: 10,      // 每页条目数
-        applications: [],   // 所有数据
+        applications: illegalFundData.data,   // 所有数据
         tableData: [],   // 目前列表数据
-        displayData: [{   // 当前页显示数据
-            id: 'ID43321432',
-            name: 'xxx诈骗事件',
-            field: '微信中奖',
-            source: '微信',
-            date: '2020-05-22 19:45:32',
-            money: '50000.00'
-        }],
+        displayData: [], // // 当前页显示数据
     },
     gatheringCenter: {  // 采集中心设置
         radio1: '近24小时',  // 筛选选项

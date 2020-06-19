@@ -301,6 +301,7 @@ export default {
   margin-top: 4px;
 }
 .so-event-content{
+    line-height: 30px;
     margin: 0 0 30px 10px;
 }
 .so-main-radio{
