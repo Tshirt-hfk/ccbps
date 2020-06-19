@@ -84,7 +84,7 @@ export default {
               }
             },
             radius:
-              (total/50).toString()+"%",
+              (total/800).toString()+"%",
             center: coord,
             data: inflationData,
             z: 100,
