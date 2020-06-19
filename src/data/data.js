@@ -45,22 +45,66 @@ export default {
         },
         radio1: '近24小时',  // 筛选选项
         radio2: '全部',
-        searchValue: '',    // 搜索框数据
-        currentPage: 1,
-        pagesize: 10,      // 每页条目数
-        applications: [],   // 所有数据
-        tableData: [],   // 目前列表数据
-        displayData: [{   // 当前页显示数据
+        // 数据源设置
+        sourceSearchValue: '',    // 搜索框数据
+        sourceCurrentPage: 1,
+        sourcePagesize: 10,      // 每页条目数
+        sourceApplications: [{   // 所有数据
             id: 'ID43321432',
             source: '虎扑',
             address: 'http://baidu.com',
             xpath: '//*[@id="cnblogs_post_body"]/p[39]/img',
             weight: '50000.00'
-        }],
+        }],  
+        sourceTableData: [],   // 目前列表数据
+        sourceDisplayData: [],  // 当前页显示数据
+
+        // 全量数据
+        allSearchValue: '',    // 搜索框数据
+        allCurrentPage: 1,
+        allPagesize: 10,      // 每页条目数
+        allApplications: [{   // 所有数据
+            id: 'ID43321432',
+            title: '虎扑',
+            content: 'http://baidu.com',
+            time: '//*[@id="cnblogs_post_body"]/p[39]/img',
+            from: '50000.00'
+        }],   
+        allTableData: [],   // 目前列表数据
+        allDisplayData: [],  // 当前页显示数据
     },
     internetOptions: { // 网络诈骗设置数据
-        internetCate: internetFraudData.categories,
-        modelDescription: '微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖',
+        internetCate: [
+            {
+              id: 1,
+              label: "网络诈骗模型",
+              children: [
+                {
+                  id: 2,
+                  label: "仿冒身份欺诈模型",
+                },
+                {
+                  id: 3,
+                  label: "购物类欺诈模型",
+                },
+                {
+                  id: 4,
+                  label: "利诱类欺诈模型",
+                },
+                {
+                  id: 5,
+                  label: "虚构险情欺诈模型",
+                },
+                {
+                  id: 6,
+                  label: "日常生活消费类欺诈模型",
+                }
+              ]
+            }
+        ],
+        models: internetFraudData.models,
+        modelName: '',
+        modelDescription: '',
         radio1: '近24小时',  // 筛选选项
         radio2: '全部',
         radio3: '5千元以下',
@@ -100,8 +144,37 @@ export default {
         ruleValue: false,  // 模型规则是否启用
     },
     illegalOptions: { // 非法集资设置数据
-        illegalCate: illegalFundData.categories,
-        modelDescription: '微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖微信中奖',
+        illegalCate: [
+            {
+              id: 1,
+              label: "非法集资模型",
+              children: [
+                {
+                  id: 2,
+                  label: "“高收益”投资模型",
+                },
+                {
+                  id: 3,
+                  label: "编造虚假项目模型",
+                },
+                {
+                  id: 4,
+                  label: "混淆投资理财模型",
+                },
+                {
+                  id: 5,
+                  label: "传销式非法集资模型",
+                },
+                {
+                  id: 6,
+                  label: "发行权利凭证类模型",
+                }
+              ]
+            }
+        ],
+        models: illegalFundData.models,
+        modelName: '',
+        modelDescription: '',
         radio1: '近24小时',  // 筛选选项
         radio2: '全部',
         radio3: '5千元以下',

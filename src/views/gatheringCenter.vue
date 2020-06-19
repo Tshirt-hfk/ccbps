@@ -26,8 +26,8 @@
             </div>
             <div class="gc-main-dataSource">
                 <div class="gc-main-dataSource-title">数据源设置</div>
-                <el-input style="width: 300px; float: right;margin-bottom: 10px;" v-model="searchValue" placeholder="请输入关键词"></el-input>
-                <el-table :data="displayData">
+                <el-input style="width: 300px; float: right;margin-bottom: 10px;" v-model="sourceSearchValue" placeholder="请输入关键词"></el-input>
+                <el-table :data="sourceDisplayData">
                     <el-table-column prop="id" label="序号" width="150">
                         <template slot-scope="scope">{{ scope.row.id}}</template>
                     </el-table-column>
@@ -45,15 +45,48 @@
                     </el-table-column>
                     <el-table-column align="right">
                         <template slot-scope="scope">
-                        <el-button size="mini" type="danger" @click="deleteSource(scope.$index)">删除</el-button>
+                        <el-button size="mini" type="danger" @click="deleteSource(scope.row.id)">删除</el-button>
                         <el-button size="mini" type="primary" @click="editSource(scope.row.id, scope.$index)">编辑</el-button>
                         </template>
                     </el-table-column>
                 </el-table>
                 <div class="passed-page">
-                <el-pagination @current-change="handleCurrentChange"
-                    :current-page="currentPage" :page-size="pagesize"
-                    layout="total, prev, pager, next, jumper" :total="tableData.length" 
+                <el-pagination @current-change="handleSourceCurrentChange"
+                    :current-page="sourceCurrentPage" :page-size="sourcePagesize"
+                    layout="total, prev, pager, next, jumper" :total="sourceTableData.length" 
+                    style="width: 300px; max-width: 550px;margin: 0 auto"> </el-pagination>
+                </div>
+            </div>
+            <div class="gc-main-allData">
+                <div class="gc-main-allData-title">全量数据</div>
+                <el-input style="width: 300px; float: right;margin-bottom: 10px;" v-model="allSearchValue" placeholder="请输入关键词"></el-input>
+                <el-table :data="allDisplayData">
+                    <el-table-column prop="id" label="序号" width="150">
+                        <template slot-scope="scope">{{ scope.row.id}}</template>
+                    </el-table-column>
+                    <el-table-column prop="title" label="标题" width="150">
+                        <template slot-scope="scope">{{ scope.row.title}}</template>
+                    </el-table-column>
+                    <el-table-column prop="content" label="正文" width="200">
+                        <template slot-scope="scope">{{ scope.row.content}}</template>
+                    </el-table-column>
+                    <el-table-column prop="time" label="时间" width="320">
+                        <template slot-scope="scope">{{ scope.row.time}}</template>
+                    </el-table-column>
+                    <el-table-column prop="from" label="来源" width="200">
+                        <template slot-scope="scope">{{ scope.row.from}}</template>
+                    </el-table-column>
+                    <el-table-column align="right">
+                        <template slot-scope="scope">
+                        <el-button size="mini" type="danger" @click="deleteSource(scope.row.id)">删除</el-button>
+                        <el-button size="mini" type="primary" @click="editSource(scope.row.id, scope.$index)">编辑</el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
+                <div class="passed-page">
+                <el-pagination @current-change="handleAllCurrentChange"
+                    :current-page="allCurrentPage" :page-size="allPagesize"
+                    layout="total, prev, pager, next, jumper" :total="allTableData.length" 
                     style="width: 300px; max-width: 550px;margin: 0 auto"> </el-pagination>
                 </div>
             </div>
@@ -92,13 +125,21 @@ import mydata from "@/data/data.js";
 export default {
     name: "gatheringCenter",
     watch:{
-        searchValue:{
-        handler(n, o){
-            clearTimeout(this.timeout);
-            this.timeout = setTimeout(() => {
-            this.remoteMethod(n);
-            }, 300);
-        }
+        sourceSearchValue:{
+            handler(n, o){
+                clearTimeout(this.timeout);
+                this.timeout = setTimeout(() => {
+                this.sourceRemoteMethod(n);
+                }, 300);
+            }
+        },
+        allSearchValue:{
+            handler(n, o){
+                clearTimeout(this.timeout);
+                this.timeout = setTimeout(() => {
+                this.allRemoteMethod(n);
+                }, 300);
+            }
         }
     },
     data() {
@@ -109,8 +150,8 @@ export default {
     },
     methods: {
         init(){
-            this.applications = this.displayData
-            this.tableData = this.displayData
+            this.sourceRemoteMethod("");
+            this.allRemoteMethod("");
             this.chartLine = echarts.init(document.getElementById('chartLineBox'));
  
             // 指定图表的配置项和数据
@@ -190,25 +231,45 @@ export default {
             // 使用刚指定的配置项和数据显示图表。
             this.chartLine.setOption(option);
         },
-        handleCurrentChange(val) {
-            this.currentPage = val;
+        handleSourceCurrentChange(val) {
+            this.sourceCurrentPage = val;
             let indexleft = val - 1;
-            let size = this.pagesize;
-            this.displayData = this.tableData.slice(indexleft*size, val*size);
+            let size = this.sourcePagesize;
+            this.sourceDisplayData = this.sourceTableData.slice(indexleft*size, val*size);
         },
         // filter
-        remoteMethod(query) {
-            this.tableData = this.applications.filter(entry => {
+        sourceRemoteMethod(query) {
+            this.sourceTableData = this.sourceApplications.filter(entry => {
                 return entry.source.toLowerCase().indexOf(query.toLowerCase()) > -1;
             });
-            this.displayData = this.tableData.slice(0, this.pagesize);
+            this.sourceDisplayData = this.sourceTableData.slice(0, this.sourcePagesize);
         },
-        deleteSource(index){
+        handleAllCurrentChange(val) {
+            this.allCurrentPage = val;
+            let indexleft = val - 1;
+            let size = this.allPagesize;
+            this.allDisplayData = this.allTableData.slice(indexleft*size, val*size);
+        },
+        // filter
+        allRemoteMethod(query) {
+            this.allTableData = this.allApplications.filter(entry => {
+                return entry.title.toLowerCase().indexOf(query.toLowerCase()) > -1;
+            });
+            this.allDisplayData = this.allTableData.slice(0, this.allPagesize);
+        },
+        deleteSource(id){
             this.$confirm('此操作将永久删除该数据源, 是否继续?', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
                 type: 'warning'
             }).then(() => {
+                let index = 0;
+                for(var i = 0; i < this.applications.length; i++){
+                    if(this.applications[i].id === id){
+                        index = i
+                        break;
+                    }
+                }
                 this.applications.splice(index, 1);
                 this.remoteMethod(this.searchValue);
                 this.$message({
@@ -288,7 +349,7 @@ export default {
 .gc-main-gatherTrend{
     margin-top: 50px;
 }
-.gc-main-gatherTrend-title, .gc-main-dataSource-title{
+.gc-main-gatherTrend-title, .gc-main-dataSource-title, .gc-main-allData-title{
     font-size: 25px;
     font-weight: bold;
 }
@@ -296,7 +357,7 @@ export default {
     height: 500px;
     padding-top: 35px;
 }
-.gc-main-dataSource{
+.gc-main-dataSource, .gc-main-allData{
     margin-top: 50px;
 }
 .passed-page{

@@ -8,7 +8,7 @@
       <el-table-column prop="name" label="用户名" width="150">
         <template slot-scope="scope">{{ scope.row.name}}</template>
       </el-table-column>
-      <el-table-column prop="email" label="邮箱" width="150">
+      <el-table-column prop="email" label="邮箱" width="250">
         <template slot-scope="scope">{{ scope.row.email}}</template>
       </el-table-column>
       <el-table-column prop="userGroup" label="用户组" width="150">
@@ -19,8 +19,7 @@
       </el-table-column>
       <el-table-column align="right">
         <template slot-scope="scope">
-          <el-button size="mini" type="text" @click="userDelete(scope.row.name)">删除</el-button>
-          <el-button size="mini" type="text" @click="audit(scope.row, true)">编辑</el-button>
+          <el-button size="mini" type="danger" @click="deleteUser(scope.row.name)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -75,11 +74,7 @@ export default {
       timeout: null,
       currentPage: 1,
       pagesize: 5,
-      applications: [],
-    //   tableData: [],
-      displayData: [],
-      tableData: [
-          {
+      applications: [{
             name: "sxc",
             email: "887283y@qq.com",
             userGroup: "外包A",
@@ -114,9 +109,9 @@ export default {
             email: "eq8wueqwu@qq.com",
             userGroup: "外包A",
             role: "普通用户"
-          }
-
-      ],
+          }],
+      displayData: [],
+      tableData: [],
     };
   },
   mounted() {
@@ -129,28 +124,7 @@ export default {
   },
   methods: {
     init() {
-      this.$axios
-        // 需要改成user获取接口
-        .post("/api/admin/getRecord")
-        .then(res => {
-          if (res.data.data) {
-            this.applications = res.data.data.records;
-            this.tableData = res.data.data.records;
-            this.displayData = res.data.data.records.slice(0, 5);
-          } else {
-            this.$message({
-              message: res.data.msg
-            });
-          }
-        })
-        .catch(error => {
-          if (error.response) {
-            this.$message({
-              message: error.response.data.msg,
-              type: "warning"
-            });
-          }
-        });
+      this.remoteMethod("");
     },
     stateChange(state){
       this.$emit('stateChange', state)
@@ -174,67 +148,30 @@ export default {
         this.displayData = this.tableData.slice(0, this.pagesize);
       }
     },
-    userDelete(name){
-        this.$axios
-            // 改成用户删除接口
-          .post("/api/user/getTaskContent", {
-              taskId: new Number(id),
-              source: 1
-          })
-          .then(res => {
-            if (res.data.data) {
-              this.form.entryName = res.data.data.entryName;
-              this.form.imageUrl = res.data.data.imageUrl;
-              this.form.intro = res.data.data.intro;
-              this.form.field.splice(0, this.form.field.length);
-              for (var field of res.data.data.field) {
-                this.form.field.push(field);
-              }
-              this.form.infoBox.splice(0, this.form.infoBox.length);
-              for (var info of res.data.data.infoBox) {
-                this.form.infoBox.push(info);
-              }
-              this.form.content = res.data.data.content;
-              this.drawerFlag = true;
-            } else {
-              this.$message({
-                message: res.data.msg,
-                type: "warning"
-              });
+    deleteUser(name){
+        this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning'
+        }).then(() => {
+            let index = 0;
+            for(var i = 0; i < this.applications.length; i++){
+                if(this.applications[i].name === name){
+                    index = i
+                    break;
+                }
             }
-          })
-          .catch(error => {
-            if (error.response) {
-              this.$message({
-                message: error.response.data.msg,
-                type: "warning"
-              });
-            }
-          });
-    },
-    audit(row, pass) {
-      this.$axios
-        //改成用户修改接口
-        .post("/api/admin/auditRecord", {
-          recordId: row.id,
-          reason: this.reason,
-          pass: pass
-        })
-        .then(res => {
-          if (res.data) {
-            this.init();
+            this.applications.splice(index, 1);
+            this.remoteMethod(this.searchValue);
             this.$message({
-              message: res.data.msg
+                type: 'success',
+                message: '删除成功!'
             });
-          }
-        })
-        .catch(error => {
-          if (error.response) {
+        }).catch(() => {
             this.$message({
-              message: error.response.data.msg,
-              type: "warning"
-            });
-          }
+                type: 'info',
+                message: '已取消删除'
+            });          
         });
     },
     handleClose(done) {

@@ -2,11 +2,11 @@
     <div class="content">
         <div class="so-main-classification">
             <el-scrollbar style="height:100%" >
-                <el-tree :data="internetCate" default-expand-all></el-tree>
+                <el-tree :data="internetCate" default-expand-all @node-click="nodeClick"></el-tree>
             </el-scrollbar>
         </div>
         <div class="so-main-event">
-            <div class="so-event-title">中奖类诈骗事件识别模型</div>
+            <div class="so-event-title">{{modelName}}</div>
             <div class="so-event-subtitle">模型描述</div>
             <div class="so-event-content">{{modelDescription}}</div>
             <div class="so-event-subtitle">模型规则配置</div>
@@ -26,7 +26,7 @@
                 </el-table-column>
                 <el-table-column align="right">
                     <template slot-scope="scope">
-                    <el-button size="mini" type="danger" @click="deleteRule(scope.$index)">删除</el-button>
+                    <el-button size="mini" type="danger" @click="deleteRule(scope.row.id)">删除</el-button>
                     <el-button size="mini" type="primary" @click="editRule(scope.row.id, scope.$index)">编辑</el-button>
                     </template>
                 </el-table-column>
@@ -39,7 +39,7 @@
             </div>
             <div class="so-event-subtitle">模型实例训练与管理</div>
             <el-input style="width: 300px; float: right;margin-bottom: 30px" v-model="modelSearchValue" placeholder="请输入关键词"></el-input>
-            <el-table :data="modelDisplayData" @cell-click='cellClick'>
+            <el-table :data="modelDisplayData">
                 <el-table-column prop="id" label="序号" width="150">
                     <template slot-scope="scope">{{ scope.row.id}}</template>
                 </el-table-column>
@@ -70,7 +70,7 @@
                 </el-table-column>
                 <el-table-column align="right">
                     <template slot-scope="scope">
-                    <el-button size="mini" type="danger" @click="deleteModel(scope.$index)">删除</el-button>
+                    <el-button size="mini" type="danger" @click="deleteModel(scope.row.id)">删除</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -136,6 +136,21 @@ export default {
         init(){
             this.modelRemoteMethod("");
             this.ruleRemoteMethod("");
+            this.modelName = this.models[0].name
+            this.modelDescription = this.models[0].description
+        },
+        nodeClick(data){
+            if(data.id === 1)
+                return;
+            let index = 0;
+            for(var i = 0; i < this.models.length; i++){
+                if(data.label === this.models[i].name){
+                    index = i;
+                    break;
+                }
+            }
+            this.modelName = this.models[index].name;
+            this.modelDescription = this.models[index].description
         },
         handleRuleCurrentChange(val) {
             this.ruleCurrentPage = val;
@@ -163,12 +178,19 @@ export default {
             });
             this.modelDisplayData = this.modelTableData.slice(0, this.modelPagesize);
         },
-        deleteRule(index){
+        deleteRule(id){
             this.$confirm('此操作将永久删除该规则, 是否继续?', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
                 type: 'warning'
             }).then(() => {
+                let index = 0;
+                for(var i = 0; i < this.ruleApplications.length; i++){
+                    if(this.ruleApplications[i].id === id){
+                        index = i
+                        break;
+                    }
+                }
                 this.ruleApplications.splice(index, 1);
                 this.ruleRemoteMethod(this.ruleSearchValue);
                 this.$message({
@@ -182,12 +204,19 @@ export default {
                 });          
                 });
         },
-        deleteModel(index){
+        deleteModel(id){
             this.$confirm('此操作将永久删除该模型, 是否继续?', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
                 type: 'warning'
             }).then(() => {
+                let index = 0;
+                for(var i = 0; i < this.modelApplications.length; i++){
+                    if(this.modelApplications[i].id === id){
+                        index = i
+                        break;
+                    }
+                }
                 this.modelApplications.splice(index, 1);
                 this.modelRemoteMethod(this.modelSearchValue);
                 this.$message({
