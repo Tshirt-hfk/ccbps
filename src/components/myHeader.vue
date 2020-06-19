@@ -43,7 +43,7 @@ export default {
   data() {
       return {
         activeIndex: '1',
-        username: "欧阳诚",
+        username: "叫我蕾蕾吧",
         circleUrl: "https://i2.hdslb.com/bfs/face/62325a7fa7aab0e2e49d7e755d4a15145489c382.jpg_64x64.jpg"
       };
     },
