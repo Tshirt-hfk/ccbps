@@ -2,7 +2,7 @@
     <div class="ed-layout">
     <div class="ed-main">
         <div class="ed-title">非法集资/案件详情</div>
-        <div class="ed-main-title">承德市刘某微信诈骗事件</div>
+        <div class="ed-main-title">{{item.name}}</div>
         <div class="ed-main-event">
             <div class="ed-main-overview">
                 <div class="ed-main-subtitle">案件概览</div>
@@ -38,23 +38,23 @@
                 <el-card class="box-card" :body-style="{ padding: '15px' }">
                     <div class="ed-main-details-title">犯罪过程</div>
                     <el-steps :active="crimeStep" align-center class="temp">
-                        <el-step title="2019/12/25" description="团伙成立"></el-step>
-                        <el-step title="2020/01/30" description="作案准备"></el-step>
-                        <el-step title="2020/05/22" description="案件实施"></el-step>
-                        <el-step title="2020/06/01" description="嫌疑人被捕"></el-step>
+                        <el-step :title="item.establish" description="团伙成立"></el-step>
+                        <el-step :title="item.eventPrepare" description="作案准备"></el-step>
+                        <el-step :title="item.eventDone" description="案件实施"></el-step>
+                        <el-step :title="item.arrested" description="嫌疑人被捕"></el-step>
                     </el-steps>
                 </el-card>
                 <el-card class="box-card-small" :body-style="{ padding: '15px' }" style="float:left;margin-right: 25px">
                     <div class="ed-main-details-title">涉案组织</div>
-                    <span class="ed-main-details-content">{{item.origination}}</span>
+                    <span class="ed-main-details-content" v-html="item.origination"></span>
                 </el-card>
                 <el-card class="box-card-small" :body-style="{ padding: '15px' }">
                     <div class="ed-main-details-title">组织人员</div>
-                    <span class="ed-main-details-content">{{item.orMember}}</span>
+                    <span class="ed-main-details-content" v-html="item.orMember"></span>
                 </el-card>
                 <el-card class="box-card-small" :body-style="{ padding: '15px' }" style="float:left;margin-right: 25px">
                     <div class="ed-main-details-title">被害人员</div>
-                    <span class="ed-main-details-content">{{item.hurtedMember}}</span>
+                    <span class="ed-main-details-content" v-html="item.hurtedMember"></span>
                 </el-card>
             </div>
         </div>
