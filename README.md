@@ -4,7 +4,8 @@
 
 # 数据配置
 
-> src/data/data.js
+> 数据配置目录src/data/
+> 具体数据配置见各个页面数据注释
 
 ## Build Setup
 
