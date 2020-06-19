@@ -118,7 +118,7 @@ export default {
     }
   },
   data() {
-    return mydata.internetFraud
+    return mydata.illegalFund
   },
   mounted() {
     this.init();
