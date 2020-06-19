@@ -13,34 +13,30 @@
         <div>
           <div class="gc-main-left">
             <div class="gc-main-left-norm">
-              <div class='gc-main-left-normTitle'>
-                今日总量
-              </div>
-              <div class='gc-main-left-normTitle'>
-                较昨日
-              </div>
-              <div class='gc-main-left-normTitle'>
-                本周总量
-              </div>
-              <div class='gc-main-left-normTitle'>
-                较上周
-              </div>
-              <div class='gc-main-left-normData' v-for='item in data.normData.data' :key='item'>
-                {{item}}
-              </div>
+              <div class="gc-main-left-normTitle">今日总量</div>
+              <div class="gc-main-left-normTitle">较昨日</div>
+              <div class="gc-main-left-normTitle">本周总量</div>
+              <div class="gc-main-left-normTitle">较上周</div>
+              <div
+                class="gc-main-left-normData"
+                v-for="item in data.normData.data"
+                :key="item"
+              >{{item}}</div>
             </div>
-            <myMap :geoCoordMap="data.myMap.geoCoordMap"
-            :rawData="data.myMap.rawData"
-            :title="data.myMap.title"
-            :index="index"></myMap>
+            <myMap
+              :geoCoordMap="data.myMap.geoCoordMap"
+              :rawData="data.myMap.rawData"
+              :title="data.myMap.title"
+              :index="index"
+            ></myMap>
           </div>
           <div class="gc-main-right">
             <div class="smooth-line">
-              <div class='gc-main-right-title' style="margin-bottom: 20px">近一周趋势</div>
+              <div class="gc-main-right-title" style="margin-bottom: 20px">近一周趋势</div>
               <chartLine :data="data.myLine.data"></chartLine>
             </div>
             <div>
-              <div class='gc-main-right-title'>高发区域排行</div>
+              <div class="gc-main-right-title">高发区域排行</div>
               <chartBar :data="data.myBar.data"></chartBar>
             </div>
             <div class="clear"></div>
@@ -48,51 +44,36 @@
         </div>
         <div>
           <div class="one-three">
-            <div class="one-three-title">网络诈骗模式统计</div>
-            <div class="one-three-ranking" v-for="item in data.myRanking.data" :key="item.name">
-                <el-col :span="4">
-                  <img class="one-three-icon" :src="item.image" />
-                </el-col>
-                <el-col :span="12">
-                  <div class="line-center">{{item.name}}</div>
-                </el-col>
-                <el-col :span="8">
-                  <div class="line-center">{{item.value}}</div>
-                </el-col>
-            </div>
-          </div>
-          <div class="one-three">
-            <div class="one-three-title">网络诈骗来源占比</div>
+            <div class="one-three-title">来源占比</div>
             <chartPie :data="data.mySource.data"></chartPie>
           </div>
           <div class="one-three">
-            <div class="one-three-title">网络诈骗热词</div>
-            <wordCloud :word_list="data.myRanking.data"></wordCloud>
-          </div>
-          <div class="clear"></div>
-        </div>
-        <div>
-          <div class="one-three">
-            <div class="one-three-title">非法集资模式统计</div>
-            <div class="one-three-ranking" v-for="item in data.myRanking1.data" :key="item.name">
-                <el-col :span="4">
-                  <img class="one-three-icon" :src="item.image" />
-                </el-col>
-                <el-col :span="12">
-                  <div class="line-center">{{item.name}}</div>
-                </el-col>
-                <el-col :span="8">
-                  <div class="line-center">{{item.value}}</div>
-                </el-col>
+            <div class="one-three-title">网络诈骗模式统计</div>
+            <div class="one-three-ranking" v-for="item in data.myRanking.data" :key="item.name">
+              <el-col :span="4">
+                <img class="one-three-icon" :src="item.image" />
+              </el-col>
+              <el-col :span="12">
+                <div class="line-center">{{item.name}}</div>
+              </el-col>
+              <el-col :span="8">
+                <div class="line-center">{{item.value}}</div>
+              </el-col>
             </div>
           </div>
           <div class="one-three">
-            <div class="one-three-title">非法集资来源占比</div>
-            <chartPie :data="data.mySource1.data"></chartPie>
-          </div>
-          <div class="one-three">
-            <div class="one-three-title">非法集资热词</div>
-            <wordCloud :word_list="data.myRanking1.data"></wordCloud>
+            <div class="one-three-title">非法集资模式统计</div>
+            <div class="one-three-ranking" v-for="item in data.myRanking1.data" :key="item.name">
+              <el-col :span="4">
+                <img class="one-three-icon" :src="item.image" />
+              </el-col>
+              <el-col :span="12">
+                <div class="line-center">{{item.name}}</div>
+              </el-col>
+              <el-col :span="8">
+                <div class="line-center">{{item.value}}</div>
+              </el-col>
+            </div>
           </div>
           <div class="clear"></div>
         </div>
@@ -127,15 +108,15 @@ export default {
   mounted() {},
   methods: {
     handleClick(tab, event) {
-      var a,b;
-      if (this.activeName=="first"){
-        a=0,b=2;
-      }else if (this.activeName=="second"){
-        a=0,b=1;
-      }else if (this.activeName=="third"){
-        a=1,b=2;
+      var a, b;
+      if (this.activeName == "first") {
+        (a = 0), (b = 2);
+      } else if (this.activeName == "second") {
+        (a = 0), (b = 1);
+      } else if (this.activeName == "third") {
+        (a = 1), (b = 2);
       }
-      this.index = [a, b]
+      this.index = [a, b];
     }
   }
 };
@@ -171,19 +152,19 @@ export default {
   width: 68%;
   float: left;
 }
-.gc-main-left-norm{
+.gc-main-left-norm {
   width: 800px;
   height: 80px;
   margin-left: 8px;
 }
-.gc-main-left-normTitle{
+.gc-main-left-normTitle {
   color: #909399;
   float: left;
   width: 200px;
   font-size: 16px;
   margin-bottom: 10px;
 }
-.gc-main-left-normData{
+.gc-main-left-normData {
   float: left;
   width: 200px;
   font-size: 25px;
@@ -192,7 +173,7 @@ export default {
   width: 32%;
   float: left;
 }
-.gc-main-right-title{
+.gc-main-right-title {
   height: 30px;
   color: #666;
   line-height: 30px;
@@ -225,18 +206,18 @@ export default {
   width: 390px;
   margin-right: 15px;
 }
-.one-three-title{
+.one-three-title {
   font-size: 18px;
   font-weight: bold;
-  border-bottom: solid 2px #DCDFE6;
+  border-bottom: solid 2px #dcdfe6;
   padding-bottom: 10px;
 }
-.one-three-ranking{
+.one-three-ranking {
   width: 380px;
   height: 40px;
   margin: 8px 0 0 5px;
 }
-.one-three-icon{
+.one-three-icon {
   height: 20px;
   width: 20px;
   margin-top: 9px;

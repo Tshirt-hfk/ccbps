@@ -95,17 +95,5 @@ export default {
             name: '论文发表',
             value: '4'
         }]
-    },
-    mySource1: { // 全域扫描中非法集资来源占比
-        data: [
-            ["微博", "微信", "论坛", "新闻", "其他"],  // 类型
-            [ // 各类型数值
-                { value: 335, name: "微博" },
-                { value: 310, name: "微信" },
-                { value: 234, name: "论坛" },
-                { value: 135, name: "新闻" },
-                { value: 1548, name: "其他" }
-            ]
-        ]
-    },
+    }
 }
