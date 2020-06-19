@@ -27,20 +27,20 @@
             <div class="gc-main-dataSource">
                 <div class="gc-main-dataSource-title">数据源设置</div>
                 <el-input style="width: 300px; float: right;margin-bottom: 10px;" v-model="sourceSearchValue" placeholder="请输入关键词"></el-input>
-                <el-table :data="sourceDisplayData">
-                    <el-table-column prop="id" label="序号" width="150">
+                <el-table :data="sourceDisplayData" highlight-current-row>
+                    <el-table-column prop="id" label="序号" width="150" show-overflow-tooltip>
                         <template slot-scope="scope">{{ scope.row.id}}</template>
                     </el-table-column>
-                    <el-table-column prop="source" label="数据源" width="150">
+                    <el-table-column prop="source" label="数据源" width="150" show-overflow-tooltip>
                         <template slot-scope="scope">{{ scope.row.source}}</template>
                     </el-table-column>
-                    <el-table-column prop="address" label="地址" width="200">
+                    <el-table-column prop="address" label="地址" width="200" show-overflow-tooltip>
                         <template slot-scope="scope">{{ scope.row.address}}</template>
                     </el-table-column>
-                    <el-table-column prop="xpath" label="xpath" width="320">
+                    <el-table-column prop="xpath" label="xpath" width="320" show-overflow-tooltip>
                         <template slot-scope="scope">{{ scope.row.xpath}}</template>
                     </el-table-column>
-                    <el-table-column prop="weight" label="权重" width="200">
+                    <el-table-column prop="weight" label="权重" width="200" show-overflow-tooltip>
                         <template slot-scope="scope">{{ scope.row.weight}}</template>
                     </el-table-column>
                     <el-table-column align="right">
@@ -60,26 +60,26 @@
             <div class="gc-main-allData">
                 <div class="gc-main-allData-title">全量数据</div>
                 <el-input style="width: 300px; float: right;margin-bottom: 10px;" v-model="allSearchValue" placeholder="请输入关键词"></el-input>
-                <el-table :data="allDisplayData">
-                    <el-table-column prop="id" label="序号" width="150">
+                <el-table :data="allDisplayData" highlight-current-row>
+                    <el-table-column prop="id" label="序号" width="150" show-overflow-tooltip>
                         <template slot-scope="scope">{{ scope.row.id}}</template>
                     </el-table-column>
-                    <el-table-column prop="title" label="标题" width="150">
+                    <el-table-column prop="title" label="标题" width="200" show-overflow-tooltip>
                         <template slot-scope="scope">{{ scope.row.title}}</template>
                     </el-table-column>
-                    <el-table-column prop="content" label="正文" width="200">
+                    <el-table-column prop="content" label="正文" width="300" show-overflow-tooltip>
                         <template slot-scope="scope">{{ scope.row.content}}</template>
                     </el-table-column>
-                    <el-table-column prop="time" label="时间" width="320">
+                    <el-table-column prop="time" label="时间" width="150" show-overflow-tooltip>
                         <template slot-scope="scope">{{ scope.row.time}}</template>
                     </el-table-column>
-                    <el-table-column prop="from" label="来源" width="200">
+                    <el-table-column prop="from" label="来源" width="200" show-overflow-tooltip>
                         <template slot-scope="scope">{{ scope.row.from}}</template>
                     </el-table-column>
                     <el-table-column align="right">
                         <template slot-scope="scope">
-                        <el-button size="mini" type="danger" @click="deleteSource(scope.row.id)">删除</el-button>
-                        <el-button size="mini" type="primary" @click="editSource(scope.row.id, scope.$index)">编辑</el-button>
+                        <el-button size="mini" type="danger" @click="deleteData(scope.row.id)">删除</el-button>
+                        <el-button size="mini" type="primary" @click="editData(scope.row.id, scope.$index)">编辑</el-button>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -91,7 +91,7 @@
                 </div>
             </div>
         </div>
-        <el-dialog title="编辑数据源" :visible.sync="editFlag" width="800px" top="30vh" center>
+        <el-dialog title="编辑数据源" :visible.sync="sourceEditFlag" width="800px" top="12vh" center>
             <el-form ref="form" :model="sourceForm" label-width="100px">
                 <el-form-item label="序号">
                     <span>{{sourceForm.id}}</span>
@@ -103,15 +103,38 @@
                     <el-input v-model="sourceForm.address"></el-input>
                 </el-form-item>
                 <el-form-item label="xpath">
-                    <el-input v-model="sourceForm.xpath" autosize></el-input>
+                    <el-input v-model="sourceForm.xpath"></el-input>
                 </el-form-item>
                 <el-form-item label="权重">
                     <el-input v-model="sourceForm.weight"></el-input>
                 </el-form-item>
             </el-form>
             <span slot="footer" class="dialog-footer">
-                <el-button @click="editFlag = false">返 回</el-button>
+                <el-button @click="sourceEditFlag = false">返 回</el-button>
                 <el-button type="primary" @click="publishSource">提 交</el-button>
+            </span>
+        </el-dialog>
+        <el-dialog title="编辑数据源" :visible.sync="allEditFlag" width="800px" top="12vh" center>
+            <el-form ref="form" :model="dataForm" label-width="100px">
+                <el-form-item label="序号">
+                    <span>{{dataForm.id}}</span>
+                </el-form-item>
+                <el-form-item label="标题">
+                    <el-input v-model="dataForm.title"></el-input>
+                </el-form-item>
+                <el-form-item label="正文">
+                    <el-input type="textarea" v-model="dataForm.content" autosize></el-input>
+                </el-form-item>
+                <el-form-item label="时间">
+                    <el-input v-model="dataForm.time"></el-input>
+                </el-form-item>
+                <el-form-item label="来源">
+                    <el-input v-model="dataForm.from"></el-input>
+                </el-form-item>
+            </el-form>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="allEditFlag = false">返 回</el-button>
+                <el-button type="primary" @click="publishData">提 交</el-button>
             </span>
         </el-dialog>
     </div>
@@ -264,14 +287,14 @@ export default {
                 type: 'warning'
             }).then(() => {
                 let index = 0;
-                for(var i = 0; i < this.applications.length; i++){
-                    if(this.applications[i].id === id){
+                for(var i = 0; i < this.sourceApplications.length; i++){
+                    if(this.sourceApplications[i].id === id){
                         index = i
                         break;
                     }
                 }
-                this.applications.splice(index, 1);
-                this.remoteMethod(this.searchValue);
+                this.sourceApplications.splice(index, 1);
+                this.sourceRemoteMethod(this.sourceSearchValue);
                 this.$message({
                     type: 'success',
                     message: '删除成功!'
@@ -283,28 +306,77 @@ export default {
                 });          
                 });
         },
-        editSource(idt, index){
-            this.editFlag = true;
-            for(var i = 0; i < this.applications.length; i++){
-                if(this.applications[i].id === idt){
-                    this.editIndex = i
+        editSource(id, index){
+            this.sourceEditFlag = true;
+            for(var i = 0; i < this.sourceApplications.length; i++){
+                if(this.sourceApplications[i].id === id){
+                    this.sourceEditIndex = i
                     break;
                 }
             }
-            this.sourceForm.id = this.displayData[index].id;
-            this.sourceForm.source = this.displayData[index].source;
-            this.sourceForm.address = this.displayData[index].address;
-            this.sourceForm.xpath = this.displayData[index].xpath;
-            this.sourceForm.weight = this.displayData[index].weight;
+            this.sourceForm.id = this.sourceDisplayData[index].id;
+            this.sourceForm.source = this.sourceDisplayData[index].source;
+            this.sourceForm.address = this.sourceDisplayData[index].address;
+            this.sourceForm.xpath = this.sourceDisplayData[index].xpath;
+            this.sourceForm.weight = this.sourceDisplayData[index].weight;
         },
         publishSource(){
-            this.applications[this.editIndex].id = this.sourceForm.id;
-            this.applications[this.editIndex].source = this.sourceForm.source;
-            this.applications[this.editIndex].address = this.sourceForm.address;
-            this.applications[this.editIndex].xpath = this.sourceForm.xpath;
-            this.applications[this.editIndex].weight = this.sourceForm.weight;
-            this.remoteMethod(this.searchValue);
-            this.editFlag = false;
+            this.sourceApplications[this.sourceEditIndex].id = this.sourceForm.id;
+            this.sourceApplications[this.sourceEditIndex].source = this.sourceForm.source;
+            this.sourceApplications[this.sourceEditIndex].address = this.sourceForm.address;
+            this.sourceApplications[this.sourceEditIndex].xpath = this.sourceForm.xpath;
+            this.sourceApplications[this.sourceEditIndex].weight = this.sourceForm.weight;
+            this.sourceRemoteMethod(this.sourceSearchValue);
+            this.sourceEditFlag = false;
+        },
+        deleteData(id){
+            this.$confirm('此操作将永久删除该数据, 是否继续?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                let index = 0;
+                for(var i = 0; i < this.allApplications.length; i++){
+                    if(this.allApplications[i].id === id){
+                        index = i
+                        break;
+                    }
+                }
+                this.allApplications.splice(index, 1);
+                this.allRemoteMethod(this.allSearchValue);
+                this.$message({
+                    type: 'success',
+                    message: '删除成功!'
+                });
+            }).catch(() => {
+                this.$message({
+                    type: 'info',
+                    message: '已取消删除'
+                });          
+                });
+        },
+        editData(id, index){
+            this.allEditFlag = true;
+            for(var i = 0; i < this.allApplications.length; i++){
+                if(this.allApplications[i].id === id){
+                    this.allEditIndex = i
+                    break;
+                }
+            }
+            this.dataForm.id = this.allDisplayData[index].id;
+            this.dataForm.title = this.allDisplayData[index].title;
+            this.dataForm.content = this.allDisplayData[index].content;
+            this.dataForm.time = this.allDisplayData[index].time;
+            this.dataForm.from = this.allDisplayData[index].from;
+        },
+        publishData(){
+            this.allApplications[this.allEditIndex].id = this.dataForm.id;
+            this.allApplications[this.allEditIndex].title = this.dataForm.title;
+            this.allApplications[this.allEditIndex].content = this.dataForm.content;
+            this.allApplications[this.allEditIndex].time = this.dataForm.time;
+            this.allApplications[this.allEditIndex].from = this.dataForm.from;
+            this.allRemoteMethod(this.allSearchValue);
+            this.allEditFlag = false;
         }
     }
 }

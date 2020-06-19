@@ -3,18 +3,18 @@
     <el-button type="primary" icon="el-icon-plus" @click="userCreateFlag=true">新建用户</el-button>
     <!-- <userCreate :entryCreateFlag.sync="userCreateFlag"></userCreate> -->
     <el-input style="width: 300px; float: right;margin-bottom: 10px;" v-model="searchValue" placeholder="请输入关键词"></el-input>
-    <el-table :data="displayData" style="width: 100%">
+    <el-table :data="displayData" style="width: 100%" highlight-current-row>
       <el-table-column type="selection" width="55"></el-table-column>
-      <el-table-column prop="name" label="用户名" width="150">
+      <el-table-column prop="name" label="用户名" width="150" show-overflow-tooltip>
         <template slot-scope="scope">{{ scope.row.name}}</template>
       </el-table-column>
-      <el-table-column prop="email" label="邮箱" width="250">
+      <el-table-column prop="email" label="邮箱" width="250" show-overflow-tooltip>
         <template slot-scope="scope">{{ scope.row.email}}</template>
       </el-table-column>
-      <el-table-column prop="userGroup" label="用户组" width="150">
+      <el-table-column prop="userGroup" label="用户组" width="150" show-overflow-tooltip>
         <template slot-scope="scope">{{ scope.row.userGroup}}</template>
       </el-table-column>
-      <el-table-column prop="role" label="角色" width="150">
+      <el-table-column prop="role" label="角色" width="150" show-overflow-tooltip>
         <template slot-scope="scope">{{ scope.row.role}}</template>
       </el-table-column>
       <el-table-column align="right">

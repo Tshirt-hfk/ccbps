@@ -11,17 +11,17 @@
             <div class="so-event-content">{{modelDescription}}</div>
             <div class="so-event-subtitle">模型规则配置</div>
             <el-input style="width: 300px; float: right;margin-bottom: 30px" v-model="ruleSearchValue" placeholder="请输入关键词"></el-input>
-            <el-table :data="ruleDisplayData">
-                <el-table-column prop="id" label="序号" width="150">
+            <el-table :data="ruleDisplayData" highlight-current-row>
+                <el-table-column prop="id" label="序号" width="150" show-overflow-tooltip>
                     <template slot-scope="scope">{{ scope.row.id}}</template>
                 </el-table-column>
-                <el-table-column prop="name" label="规则名称" width="200">
+                <el-table-column prop="name" label="规则名称" width="200" show-overflow-tooltip>
                     <template slot-scope="scope">{{ scope.row.name}}</template>
                 </el-table-column>
-                <el-table-column prop="regular" label="正则表达式" width="300">
+                <el-table-column prop="regular" label="正则表达式" width="300" show-overflow-tooltip>
                     <template slot-scope="scope">{{ scope.row.regular}}</template>
                 </el-table-column>
-                <el-table-column prop="weight" label="权重" width="150">
+                <el-table-column prop="weight" label="权重" width="150" show-overflow-tooltip>
                     <template slot-scope="scope">{{ scope.row.weight}}</template>
                 </el-table-column>
                 <el-table-column align="right">
@@ -39,17 +39,17 @@
             </div>
             <div class="so-event-subtitle">模型实例训练与管理</div>
             <el-input style="width: 300px; float: right;margin-bottom: 30px" v-model="modelSearchValue" placeholder="请输入关键词"></el-input>
-            <el-table :data="modelDisplayData">
+            <el-table :data="modelDisplayData" highlight-current-row>
                 <el-table-column prop="id" label="序号" width="150">
                     <template slot-scope="scope">{{ scope.row.id}}</template>
                 </el-table-column>
-                <el-table-column prop="name" label="模型名称" width="120">
+                <el-table-column prop="name" label="模型名称" width="120" show-overflow-tooltip>
                     <template slot-scope="scope">{{ scope.row.name}}</template>
                 </el-table-column>
-                <el-table-column prop="dataset" label="数据集" width="200">
+                <el-table-column prop="dataset" label="数据集" width="200" show-overflow-tooltip>
                     <template slot-scope="scope">{{ scope.row.dataset}}</template>
                 </el-table-column>
-                <el-table-column prop="trainingTime" label="训练时间" width="200">
+                <el-table-column prop="trainingTime" label="训练时间" width="200" show-overflow-tooltip>
                     <template slot-scope="scope">{{ scope.row.trainingTime}}</template>
                 </el-table-column>
                 <el-table-column label="发布" width="120">

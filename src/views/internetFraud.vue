@@ -39,23 +39,23 @@
           v-model="searchValue"
           placeholder="请输入关键词"
         ></el-input>
-        <el-table :data="displayData">
-          <el-table-column prop="id" label="序号" width="120">
+        <el-table :data="displayData" highlight-current-row>
+          <el-table-column prop="id" label="序号" width="120" show-overflow-tooltip>
             <template slot-scope="scope">{{ scope.row.id}}</template>
           </el-table-column>
-          <el-table-column prop="name" label="事件名称" width="180">
+          <el-table-column prop="name" label="事件名称" width="180" show-overflow-tooltip>
             <template slot-scope="scope">{{ scope.row.name}}</template>
           </el-table-column>
-          <el-table-column prop="field" label="类别" width="120">
+          <el-table-column prop="field" label="类别" width="120" show-overflow-tooltip>
             <template slot-scope="scope">{{ scope.row.type}}</template>
           </el-table-column>
-          <el-table-column prop="source" label="来源" width="120">
+          <el-table-column prop="source" label="来源" width="120" show-overflow-tooltip>
             <template slot-scope="scope">{{ scope.row.source}}</template>
           </el-table-column>
-          <el-table-column prop="date" label="发现日期" width="200">
+          <el-table-column prop="date" label="发现日期" width="200" show-overflow-tooltip>
             <template slot-scope="scope">{{ scope.row.date | handleTime}}</template>
           </el-table-column>
-          <el-table-column prop="money" label="涉案金额" width="150">
+          <el-table-column prop="money" label="涉案金额" width="150" show-overflow-tooltip>
             <template slot-scope="scope">{{ scope.row.money}}</template>
           </el-table-column>
           <el-table-column align="right">
