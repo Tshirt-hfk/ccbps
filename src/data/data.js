@@ -77,7 +77,7 @@ export default {
             id: 'ID43321432',
             name: '微信',
             regular: '//*[@id="cnblogs_post_body"]/p[39]/',
-            weight: '50000.00'
+            weight: '50000.00',
         }], 
         ruleTableData: [],   // 规则配置目前列表数据
         ruleDisplayData: [], // 规则配置当前页显示数据
@@ -89,12 +89,12 @@ export default {
             id: 'ID43321432',
             name: '微信',
             dataset: 'dataset-2020-05-06.zip',
-            trainingTime: '2020-05-22 19:45:32'
+            trainingTime: '2020-05-22 19:45:32',
+            releaseValue: false,     // 模型是否发布
+          ruleValue: false,  // 模型规则是否启用
         }],   
         modelTableData: [],   // 模型目前列表数据
         modelDisplayData: [],  // 模型当前页显示数据
-        releaseValue: false,     // 模型是否发布
-        ruleValue: false,  // 模型规则是否启用
     },
     illegalOptions: { // 非法集资设置数据
         illegalCate: [
@@ -147,7 +147,7 @@ export default {
             id: 'ID43321432',
             name: '微信',
             regular: '//*[@id="cnblogs_post_body"]/p[39]/',
-            weight: '50000.00'
+            weight: '50000.00',
         }], 
         ruleTableData: [],   // 规则配置目前列表数据
         ruleDisplayData: [],  // 规则配置当前页显示数据
@@ -159,11 +159,18 @@ export default {
             id: 'ID43321432',
             name: '微信',
             dataset: 'dataset-2020-05-06.zip',
-            trainingTime: '2020-05-22 19:45:32'
-        }],   
+            trainingTime: '2020-05-22 19:45:32',
+            releaseValue: false,     // 模型是否发布
+          ruleValue: false,  // 模型规则是否启用
+        },{   // 模型所有数据
+          id: 'ID43321432',
+          name: '微信',
+          dataset: 'dataset-2020-05-06.zip',
+          trainingTime: '2020-05-22 19:45:32',
+          releaseValue: false,     // 模型是否发布
+        ruleValue: false,  // 模型规则是否启用
+      }],   
         modelTableData: [],   // 模型目前列表数据
         modelDisplayData: [], // 模型当前页显示数据
-        releaseValue: false,     // 模型是否发布
-        ruleValue: false,  // 模型规则是否启用
     }
 }
