@@ -11,6 +11,7 @@
         <div class="if-main-radio">
           <div class="if-main-radio-title">时间：</div>
           <el-radio-group v-model="radio1" size="small">
+            <el-radio-button label="全部"></el-radio-button>
             <el-radio-button label="近24小时"></el-radio-button>
             <el-radio-button label="近7天"></el-radio-button>
             <el-radio-button label="近30天"></el-radio-button>
@@ -28,6 +29,7 @@
         <div class="if-main-radio">
           <div class="if-main-radio-title">涉案金额：</div>
           <el-radio-group v-model="radio3" size="small">
+            <el-radio-button label="全部"></el-radio-button>
             <el-radio-button label="5千元以下"></el-radio-button>
             <el-radio-button label="5千元-5万元"></el-radio-button>
             <el-radio-button label="5万-50万"></el-radio-button>
@@ -153,7 +155,8 @@ export default {
         return false;
       var now = new Date();
       var t = 1;
-      if (this.radio1 == "近24小时") t = 1;
+      if(this.radio1 == "全部") t = 99999;
+      else if (this.radio1 == "近24小时") t = 1;
       else if (this.radio1 == "近7天") t = 7;
       else if (this.radio1 == "近30天") t = 30;
       if (now.setDate(now.getDate() - t) > date) return false;
