@@ -55,7 +55,7 @@
                 <el-table-column label="发布" width="120">
                     <template slot-scope="scope">
                         <el-switch
-                        v-model="releaseValue"
+                        v-model="scope.row.releaseValue"
                         @click="getTaskContent(scope.row.id)">
                         </el-switch>
                     </template>
@@ -63,7 +63,7 @@
                 <el-table-column label="启用规则" width="120">
                     <template slot-scope="scope">
                         <el-switch
-                        v-model="ruleValue"
+                        v-model="scope.row.ruleValue"
                         @click="getTaskContent(scope.row.id)">
                         </el-switch>
                     </template>
