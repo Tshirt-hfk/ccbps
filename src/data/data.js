@@ -4,9 +4,9 @@ import illegalFundData from "@/data/illegalFundData.js";
 export default {
     internetFraud: {    // 网络诈骗
         categories: internetFraudData.categories,
-        radio1: "近24小时", // 筛选选项
+        radio1: "全部", // 筛选选项
         radio2: "全部",
-        radio3: "5千元以下",
+        radio3: "全部",
         searchValue: "", // 搜索框数据
         currentPage: 1,
         pagesize: 10, // 每页条目数
@@ -58,9 +58,9 @@ export default {
         models: internetFraudData.models,
         modelName: '',
         modelDescription: '',
-        radio1: '全部',  // 筛选选项
+        radio1: '近24小时',  // 筛选选项
         radio2: '全部',
-        radio3: '全部',
+        radio3: '5千元以下',
         //  规则配置
         editFlag: false,   // 编辑框
         editIndex: 0,
@@ -160,9 +160,9 @@ export default {
         models: illegalFundData.models,
         modelName: '',
         modelDescription: '',
-        radio1: '全部',  // 筛选选项
+        radio1: '近24小时',  // 筛选选项
         radio2: '全部',
-        radio3: '全部',
+        radio3: '5千元以下',
         //  规则配置
         editFlag: false,   // 编辑框
         editIndex: 0,
