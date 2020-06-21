@@ -58,9 +58,9 @@ export default {
         models: internetFraudData.models,
         modelName: '',
         modelDescription: '',
-        radio1: '近24小时',  // 筛选选项
+        radio1: '全部',  // 筛选选项
         radio2: '全部',
-        radio3: '5千元以下',
+        radio3: '全部',
         //  规则配置
         editFlag: false,   // 编辑框
         editIndex: 0,
@@ -128,9 +128,9 @@ export default {
         models: illegalFundData.models,
         modelName: '',
         modelDescription: '',
-        radio1: '近24小时',  // 筛选选项
+        radio1: '全部',  // 筛选选项
         radio2: '全部',
-        radio3: '5千元以下',
+        radio3: '全部',
         //  规则配置
         editFlag: false,   // 编辑框
         editIndex: 0,
