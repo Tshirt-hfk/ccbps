@@ -41,59 +41,59 @@ export default {
     myRanking: { // 全域扫描中诈骗模式统计
         data: [{       // 诈骗模式排名
             image: '/static/images/number1.png',
-            name: '微信中奖',
-            value: '26'
+            name: '冒充领导',
+            value: '4526'
         }, {
             image: '/static/images/number2.png',
-            name: '彩票中奖',
-            value: '24'
+            name: '冒充公检法',
+            value: '3424'
         }, {
             image: '/static/images/number3.png',
-            name: '谎报车祸',
-            value: '13'
+            name: '高薪招聘',
+            value: '2313'
         }, {
             image: '/static/images/number4.png',
             name: '银行卡冻结',
-            value: '6'
+            value: '2168'
         }, {
             image: '/static/images/number5.png',
-            name: '论文发表',
-            value: '4'
+            name: '刷卡消费',
+            value: '1490'
         }]
     },
     mySource: { // 全域扫描中来源占比
         data: [
-            ["微博", "微信", "论坛", "新闻", "其他"],  // 类型
+            ["裁判文书网", "微信", "论坛", "新闻", "微博"],  // 类型
             [ // 各类型数值
-                { value: 335, name: "微博" },
-                { value: 310, name: "微信" },
-                { value: 234, name: "论坛" },
-                { value: 135, name: "新闻" },
-                { value: 1548, name: "其他" }
+                { value: 12654, name: "裁判文书网" },
+                { value: 9310, name: "微信" },
+                { value: 7234, name: "论坛" },
+                { value: 6135, name: "新闻" },
+                { value: 5548, name: "微博" }
             ]
         ]
     },
     myRanking1: { // 全域扫描中非法集资统计
         data: [{       // 非法集资排名
             image: '/static/images/number1.png',
-            name: '微信中奖',
-            value: '26'
+            name: '高收益投资',
+            value: '4626'
         }, {
             image: '/static/images/number2.png',
-            name: '彩票中奖',
-            value: '24'
+            name: '编造虚假项目',
+            value: '3324'
         }, {
             image: '/static/images/number3.png',
-            name: '谎报车祸',
-            value: '13'
+            name: '混淆投资理财',
+            value: '2813'
         }, {
             image: '/static/images/number4.png',
-            name: '银行卡冻结',
-            value: '6'
+            name: '传销式',
+            value: '2836'
         }, {
             image: '/static/images/number5.png',
-            name: '论文发表',
-            value: '4'
+            name: '发行权利凭证类',
+            value: '2684'
         }]
     },
     mySource1: { // 全域扫描中非法集资来源占比
