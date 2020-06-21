@@ -16,9 +16,9 @@ export default {
     },
     illegalFund: {  // 非法集资数据
         categories: illegalFundData.categories,
-        radio1: '近24小时',  // 筛选选项
+        radio1: '全部',  // 筛选选项
         radio2: '全部',
-        radio3: '5千元以下',
+        radio3: '全部',
         searchValue: '',    // 搜索框数据
         currentPage: 1,
         pagesize: 10,      // 每页条目数
