@@ -37,7 +37,7 @@
                 <div class="ed-main-subtitle">案件详情</div>
                 <el-card class="box-card" :body-style="{ padding: '15px' }">
                     <div class="ed-main-details-title">犯罪过程</div>
-                    <el-steps :active="crimeStep" align-center class="temp">
+                    <el-steps :active="4" align-center class="temp">
                         <el-step :title="item.establish" description="团伙成立"></el-step>
                         <el-step :title="item.eventPrepare" description="作案准备"></el-step>
                         <el-step :title="item.eventDone" description="案件实施"></el-step>
