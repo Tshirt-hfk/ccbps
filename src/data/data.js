@@ -6,7 +6,6 @@ export default {
         categories: internetFraudData.categories,
         radio1: "全部", // 筛选选项
         radio2: "全部",
-        radio3: "全部",
         searchValue: "", // 搜索框数据
         currentPage: 1,
         pagesize: 10, // 每页条目数
@@ -18,7 +17,6 @@ export default {
         categories: illegalFundData.categories,
         radio1: '全部',  // 筛选选项
         radio2: '全部',
-        radio3: '全部',
         searchValue: '',    // 搜索框数据
         currentPage: 1,
         pagesize: 10,      // 每页条目数

@@ -18,17 +18,8 @@
           </el-radio-group>
         </div>
         <div class="if-main-radio">
-          <div class="if-main-radio-title">来源：</div>
-          <el-radio-group v-model="radio2" size="small">
-            <el-radio-button label="全部"></el-radio-button>
-            <el-radio-button label="微信"></el-radio-button>
-            <el-radio-button label="微博"></el-radio-button>
-            <el-radio-button label="论坛"></el-radio-button>
-          </el-radio-group>
-        </div>
-        <div class="if-main-radio">
           <div class="if-main-radio-title">涉案金额：</div>
-          <el-radio-group v-model="radio3" size="small">
+          <el-radio-group v-model="radio2" size="small">
             <el-radio-button label="全部"></el-radio-button>
             <el-radio-button label="5千元以下"></el-radio-button>
             <el-radio-button label="5千元-5万元"></el-radio-button>
@@ -50,9 +41,6 @@
           </el-table-column>
           <el-table-column prop="field" label="类别" width="120" show-overflow-tooltip>
             <template slot-scope="scope">{{ scope.row.type}}</template>
-          </el-table-column>
-          <el-table-column prop="source" label="来源" width="120" show-overflow-tooltip>
-            <template slot-scope="scope">{{ scope.row.source}}</template>
           </el-table-column>
           <el-table-column prop="date" label="发现日期" width="200" show-overflow-tooltip>
             <template slot-scope="scope">{{ scope.row.date | handleTime}}</template>
@@ -109,14 +97,6 @@ export default {
           this.remoteMethod();
         }, 300);
       }
-    },
-    radio3: {
-      handler(n, o) {
-        clearTimeout(this.timeout);
-        this.timeout = setTimeout(() => {
-          this.remoteMethod();
-        }, 300);
-      }
     }
   },
   data() {
@@ -160,13 +140,12 @@ export default {
       else if (this.radio1 == "近7天") t = 7;
       else if (this.radio1 == "近30天") t = 30;
       if (now.setDate(now.getDate() - t) > date) return false;
-      if (this.radio2 !== "全部" && source !== this.radio2) return false;
-      if (this.radio3 == "5千元以下" && money > 5000) return false;
-      else if (this.radio3 == "5千元-5万元" && (5000 >= money || money > 50000))
+      if (this.radio2 == "5千元以下" && money > 5000) return false;
+      else if (this.radio2 == "5千元-5万元" && (5000 >= money || money > 50000))
         return false;
-      else if (this.radio3 == "5万-50万" && (50000 >= money || money > 500000))
+      else if (this.radio2 == "5万-50万" && (50000 >= money || money > 500000))
         return false;
-      else if (this.radio3 == "50万以上" && money <= 500000) return false;
+      else if (this.radio2 == "50万以上" && money <= 500000) return false;
       return true;
     },
     getTaskContent(id) {
