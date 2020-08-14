@@ -6,7 +6,7 @@
           <img class="header-l-logo-1" src="/static/images/index-logo-1.png" />
           <img class="header-l-logo-2" src="/static/images/index-logo-2.png" />
         </div>
-        <div class="header-l-title">网络空间行为犯罪系统</div>
+        <div class="header-l-title">网络空间XX监测系统</div>
       </div>
       <div class="header-m">
         <el-menu
