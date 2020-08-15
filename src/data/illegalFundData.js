@@ -4,7 +4,7 @@ export default {
     {   
       id: "ID43321443",
       name: "庄某某非法吸收公众存款案",
-      type: "非法集资",
+      type: "编造虚假新能源项目",
       pos: "湖南省 益阳市",
       num: 3,   
       source: "微信",       
@@ -354,7 +354,7 @@ export default {
   categories: [
     {
       id: 1,
-      label: "非法集资分类体系",
+      label: "非法集资",
       children: [
             {
               id: 2,

@@ -3,8 +3,15 @@
     <div class="if-main">
       <div class="if-main-title">网络诈骗/案件概览</div>
       <div class="if-main-classification">
-        <el-scrollbar style="height:100%" >
-          <el-tree :data="categories" default-expand-all></el-tree>
+        <el-scrollbar style="height:100%">
+          <el-tree
+            ref="tree"
+            :data="categories"
+            node-key="id"
+            @check="handleNodeChange"
+            show-checkbox
+            default-expand-all
+          ></el-tree>
         </el-scrollbar>
       </div>
       <div class="if-main-event">
@@ -70,7 +77,7 @@
 </template>
 
 <script>
-import mydata from "@/data/data.js"
+import internetFraudData from "@/data/internetFraudData.js";
 export default {
   name: "internetFraud",
   watch: {
@@ -80,35 +87,40 @@ export default {
         this.timeout = setTimeout(() => {
           this.remoteMethod();
         }, 300);
-      }
+      },
     },
     radio1: {
       handler(n, o) {
-        clearTimeout(this.timeout);
-        this.timeout = setTimeout(() => {
-          this.remoteMethod();
-        }, 300);
-      }
+        this.remoteMethod();
+      },
     },
     radio2: {
       handler(n, o) {
-        clearTimeout(this.timeout);
-        this.timeout = setTimeout(() => {
-          this.remoteMethod();
-        }, 300);
-      }
-    }
+        this.remoteMethod();
+      },
+    },
   },
   data() {
-    return mydata.internetFraud
+    return {    // 网络诈骗
+        nodes: [],
+        categories: internetFraudData.categories,
+        radio1: "全部", // 筛选选项
+        radio2: "全部",
+        searchValue: "", // 搜索框数据
+        currentPage: 1,
+        pagesize: 10, // 每页条目数
+        applications: internetFraudData.data, // 所有数据
+        tableData: [], // 目前列表数据
+        displayData: []
+    };
   },
   mounted() {
-    this.init();
+    his.nodes = this.$refs.tree.getCheckedNodes(true, false).map((item) => {
+      return item.label;
+    });
+    this.remoteMethod();
   },
   methods: {
-    init() {
-      this.remoteMethod();
-    },
     handleCurrentChange(val) {
       this.currentPage = val;
       let indexleft = val - 1;
@@ -117,17 +129,18 @@ export default {
     },
     // filter
     remoteMethod() {
-      this.tableData = this.applications.filter(entry => {
+      this.tableData = this.applications.filter((entry) => {
         return this.filterData(
           entry.name,
           entry.date,
           entry.source,
-          entry.money
+          entry.money,
+          entry.type
         );
       });
       this.displayData = this.tableData.slice(0, this.pagesize);
     },
-    filterData(name, date, source, money) {
+    filterData(name, date, source, money, etype) {
       if (
         this.searchValue !== "" &&
         name.toLowerCase().indexOf(this.searchValue.toLowerCase()) == -1
@@ -135,7 +148,7 @@ export default {
         return false;
       var now = new Date();
       var t = 1;
-      if(this.radio1 == "全部") t = 99999;
+      if (this.radio1 == "全部") t = 99999;
       else if (this.radio1 == "近24小时") t = 1;
       else if (this.radio1 == "近7天") t = 7;
       else if (this.radio1 == "近30天") t = 30;
@@ -146,14 +159,21 @@ export default {
       else if (this.radio2 == "5万-50万" && (50000 >= money || money > 500000))
         return false;
       else if (this.radio2 == "50万以上" && money <= 500000) return false;
+      if (this.nodes.indexOf(etype) < 0) return false;
       return true;
     },
     getTaskContent(id) {
       this.$router.push({
         path: "/internetFraudEventDetails",
-        query: { id: id }
+        query: { id: id },
       });
-    }
+    },
+    handleNodeChange() {
+      this.nodes = this.$refs.tree.getCheckedNodes(true, false).map((item) => {
+        return item.label;
+      });
+      this.remoteMethod()
+    },
   },
   filters: {
     handleTime(timestamp) {
@@ -170,8 +190,8 @@ export default {
         " " +
         date.toTimeString().substr(0, 8)
       );
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -197,16 +217,16 @@ export default {
   font-weight: bold;
 }
 .if-main-classification {
-  width: 220px;
-  border-right: solid 2px #DCDFE6;
+  width: 260px;
+  border-right: solid 2px #dcdfe6;
   position: absolute;
   top: 90px;
   bottom: 40px;
   padding-left: 20px;
 }
 .if-main-event {
-  width: 1000px;
-  margin-left: 260px;
+  width: 960px;
+  margin-left: 300px;
 }
 .if-main-radio {
   width: 600px;
@@ -226,8 +246,7 @@ export default {
 </style>
 
 <style>
-.el-scrollbar__wrap
-{
+.el-scrollbar__wrap {
   overflow-x: hidden;
 }
 </style>

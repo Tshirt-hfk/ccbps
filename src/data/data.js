@@ -2,28 +2,6 @@ import internetFraudData from "@/data/internetFraudData.js";
 import illegalFundData from "@/data/illegalFundData.js";
 
 export default {
-    internetFraud: {    // 网络诈骗
-        categories: internetFraudData.categories,
-        radio1: "全部", // 筛选选项
-        radio2: "全部",
-        searchValue: "", // 搜索框数据
-        currentPage: 1,
-        pagesize: 10, // 每页条目数
-        applications: internetFraudData.data, // 所有数据
-        tableData: [], // 目前列表数据
-        displayData: []
-    },
-    illegalFund: {  // 非法集资数据
-        categories: illegalFundData.categories,
-        radio1: '全部',  // 筛选选项
-        radio2: '全部',
-        searchValue: '',    // 搜索框数据
-        currentPage: 1,
-        pagesize: 10,      // 每页条目数
-        applications: illegalFundData.data,   // 所有数据
-        tableData: [],   // 目前列表数据
-        displayData: [], // // 当前页显示数据
-    },
     internetOptions: { // 网络诈骗设置数据
         internetCate: [
             {

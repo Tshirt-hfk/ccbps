@@ -4,7 +4,7 @@ export default {
         // 当前页显示数据
         id: "ID43321432",
         name: "xxx诈骗事件",
-        type: "微信中奖",
+        type: "冒充领导欺诈",
         pos: "河北省 承德市",
         num: 3,
         source: "微信",         // 来源
@@ -395,7 +395,7 @@ export default {
     categories: [
         {
           id: 1,
-          label: "网络诈骗分类体系",
+          label: "网络诈骗",
           children: [
             {
               id: 2,
