@@ -365,32 +365,127 @@ export default {
       name: '仿冒身份欺诈模型',
       description: '通过冒充伪装成领导、亲友、机构单位等身份进行欺诈。支持识别的诈骗类型：冒充领导诈骗；冒充亲友诈骗；冒充公司老总诈骗；补助救助、助学金诈骗；冒充公检法电话诈骗；伪造身份诈骗；医保，社保诈骗。\
       模型结构：基于注意力机制的循环神经网络。',
-      rules: [],
-      instances: [],
+      rules: [
+        {  
+            id: 'ID43321432',
+            name: '冒充领导',
+            regular: '我是.[局处]，明天来一下办公室',
+            weight: '1000'
+        },
+        {  
+            id: 'ID43321432',
+            name: '助学金诈骗',
+            regular: '免利息|不限时|助学金',
+            weight: '5000',
+        }],
+      instances: [{ 
+        id: 'ID43321432',
+        name: '仿冒身份诈骗-0506',
+        dataset: 'dataset-2020-05-06.zip',
+        trainingTime: '2020-05-06 15:41:42',
+        releaseValue: false,     // 模型是否发布
+        ruleValue: false,  // 模型规则是否启用
+      }],
     },{
       name: '购物类欺诈模型',
       description: '通过以各种虚假优惠信息、客服退款、虚假网店实施欺诈。支持识别的诈骗类型：假客代购诈骗；退款诈骗；低价购物诈骗；解除分期付款诈骗；收藏诈骗；快递签收诈骗；发布虚假爱心传递；点赞诈骗。\
       模型结构：基于注意力机制的循环神经网络。',
-      rules: [],
-      instances: [],
+      rules: [
+        {   
+            id: 'ID43321432',
+            name: '假客代购',
+            regular: '我是.[代购商]，无税代购，便宜50%',
+            weight: '1000'
+        },{  
+            id: 'ID43321432',
+            name: '退款诈骗',
+            regular: '您有一笔退款需要领取，请联系.[工作人员]',
+            weight: '500'
+        },{  
+            id: 'ID43321432',
+            name: '虚假爱心',
+            regular: '贫穷山区|献爱心',
+            weight: '3000'
+        },
+      ],
+      instances: [{ 
+        id: 'ID43321432',
+        name: '购物类欺诈-0506',
+        dataset: 'dataset-2020-05-06.zip',
+        trainingTime: '2020-05-06 15:41:42',
+        releaseValue: false,     // 模型是否发布
+        ruleValue: false,  // 模型规则是否启用
+      }],
     },{
       name: '利诱类欺诈模型',
       description: '以各种诱惑性的中奖信息、奖励、高额吸引用户进行诈骗。支持识别的诈骗类型：冒充知名企业中奖诈骗；娱乐节目中奖诈骗；兑换积分诈骗；二维码诈骗；重金求子诈骗；高薪招聘诈骗；电子邮件中奖诈骗。\
       模型结构：基于注意力机制的循环神经网络。',
-      rules: [],
-      instances: [],
+      rules: [
+        {   
+            id: 'ID43321432',
+            name: '中奖诈骗',
+            regular: '六合彩|彩票|红包',
+            weight: '3000'
+        },{   
+            id: 'ID43321432',
+            name: '重金求子',
+            regular: '本人女，重金求子，事成之后付.[20万]',
+            weight: '2000'
+        },
+      ],
+      instances: [{ 
+        id: 'ID43321432',
+        name: '利诱类欺诈-0506',
+        dataset: 'dataset-2020-05-06.zip',
+        trainingTime: '2020-05-06 15:41:42',
+        releaseValue: false,     // 模型是否发布
+        ruleValue: false,  // 模型规则是否启用
+      }],
     },{
       name: '虚构险情欺诈模型',
       description: '通过捏造各种意外不测、让用户惊吓不安的消息实施欺诈。支持识别的诈骗类型：虚构车祸诈骗；虚构绑架诈骗；虚构手术诈骗；虚构危难困局求助诈骗；虚构包裹藏毒诈骗；捏造淫秽图片勒索诈骗；虚构小三怀孕数流产。\
       模型结构：基于注意力机制的循环神经网络。',
-      rules: [],
-      instances: [],
+      rules: [
+        {   
+            id: 'ID43321432',
+            name: '虚构欺诈',
+            regular: '绑架|车祸|淫秽色情',
+            weight: '1000'
+        },
+      ],
+      instances: [{ 
+        id: 'ID43321432',
+        name: '虚构险情欺诈-0506',
+        dataset: 'dataset-2020-05-06.zip',
+        trainingTime: '2020-05-06 15:41:42',
+        releaseValue: false,     // 模型是否发布
+        ruleValue: false,  // 模型规则是否启用
+      }],
     },{
       name: '日常生活消费类欺诈模型',
       description: '针对日常生活各种缴费、消费实施欺诈骗局。支持识别的诈骗类型：冒充房东短信诈骗；电话欠费诈骗；电视欠费诈骗；购物退税诈骗；机票改签诈骗；订票诈骗；ATM机告示诈骗；刷卡消费诈骗；引诱汇款诈骗。\
       模型结构：基于注意力机制的循环神经网络。',
-      rules: [],
-      instances: [],
+      rules: [
+        {   
+            id: 'ID43321432',
+            name: '欠费欺诈',
+            regular: '电视|电话|房租',
+            weight: '5000'
+        },{   
+          id: 'ID43321432',
+          name: '票务欺诈',
+          regular: '改签|退票',
+          weight: '1000'
+      },
+      ],
+      instances: [{ 
+        id: 'ID43321432',
+        name: '日常生活消费欺诈-0506',
+        dataset: 'dataset-2020-05-06.zip',
+        trainingTime: '2020-05-06 15:41:42',
+        releaseValue: false,     // 模型是否发布
+        ruleValue: false,  // 模型规则是否启用
+      }],
     }],
     categories: [
         {

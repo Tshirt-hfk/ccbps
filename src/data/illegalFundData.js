@@ -328,28 +328,125 @@ export default {
     models:[{
       name: '“高收益”投资模型',
       description: '通常会承诺投资者以奖励、积分返利以及暴利引诱等形式给予高额回报。支持识别的非法集资类型：许诺投资者高额定期收益。模型结构：基于注意力机制的循环神经网络。',
-      rules: [],
-      instances: [],
+      rules: [
+        {
+            id: 'ID43321432',
+            name: '高收益1',
+            regular: '回报|收益|利润',
+            weight: '50'
+        },
+        {   // 规则配置所有数据
+            id: 'ID43321433',
+            name: '高收益2',
+            regular: '积分返利',
+            weight: '100'
+        },
+        {   // 规则配置所有数据
+            id: 'ID43321434',
+            name: '高收益3',
+            regular: '随时可取|定期',
+            weight: '200'
+        }
+      ],
+      instances: [{
+        id: 'ID43321432',
+        name: '高收益-0506',
+        dataset: 'dataset-2020-05-06.zip',
+        trainingTime: '2020-05-06 15:41:42',
+        releaseValue: [false, true],     // 模型是否发布
+        ruleValue: false,  // 模型规则是否启用
+      }],
     },{
       name: '编造虚假项目模型',
       description: '通过注册合法的公司或企业，打着响应国家产业政策、支持新农村建设等旗号，以订立合同为幌子，编造虚假项目，骗取社会公众投资。支持识别的非法集资类型：编造虚假扩大生产经营需求；编造虚假高科技开发项目；编造虚假基建类项目；编造虚假环保类项目；编造虚假新能源项目。模型结构：基于注意力机制的循环神经网络。',
-      rules: [],
-      instances: [],
+      rules: [
+        {
+            id: 'ID43321432',
+            name: '虚假1',
+            regular: '国家政策|高科技开发|环保',
+            weight: '500'
+        },{
+            id: 'ID43321432',
+            name: '虚假2',
+            regular: '为响应.[国家]号召，需要召集大家集资建设',
+            weight: '800'
+        },
+      ],
+      instances: [{
+        id: 'ID43321432',
+        name: '虚假-0506',
+        dataset: 'dataset-2020-05-06.zip',
+        trainingTime: '2020-05-06 15:41:42',
+        releaseValue: [false, true],     // 模型是否发布
+        ruleValue: false,  // 模型规则是否启用
+      }],
     },{
       name: '混淆投资理财模型',
       description: '假借委托理财名义,故意混淆投资理财概念,利用电子黄金、投资基金、网络炒汇、电子商务等新名词迷惑社会公众。支持识别的非法集资类型：编造电子黄金概念；编造网络炒汇概念；编造入股加盟概念。模型结构：基于注意力机制的循环神经网络。',
-      rules: [],
-      instances: [],
+      rules: [
+        {
+            id: 'ID43321432',
+            name: '投资1',
+            regular: '电子黄金|网络炒汇|电子商务',
+            weight: '2000'
+        },{
+            id: 'ID43321432',
+            name: '投资2',
+            regular: '新型.[电子黄金]，投资稳赚不赔',
+            weight: '1000'
+        },
+      ],
+      instances: [{
+        id: 'ID43321432',
+        name: '投资-0506',
+        dataset: 'dataset-2020-05-06.zip',
+        trainingTime: '2020-05-06 15:41:42',
+        releaseValue: [false, true],     // 模型是否发布
+        ruleValue: false,  // 模型规则是否启用
+      }],
     },{
       name: '传销式非法集资模型',
       description: '利用精神、人身强制或亲情诱骗，不断扩大受害群体。支持识别的非法集资类型：许诺多层级代理人收益；许诺拉人收益。模型结构：基于注意力机制的循环神经网络。',
-      rules: [],
-      instances: [],
+      rules: [
+        {
+            id: 'ID43321432',
+            name: '传销1',
+            regular: '亲朋好友都在用，你还能发展自己的多层级收益',
+            weight: '5000'
+        },{
+            id: 'ID43321432',
+            name: '传销2',
+            regular: '拉人收益|好友',
+            weight: '2000'
+        },
+      ],
+      instances: [{
+        id: 'ID43321432',
+        name: '传销-0506',
+        dataset: 'dataset-2020-05-06.zip',
+        trainingTime: '2020-05-06 15:41:42',
+        releaseValue: [false, true],     // 模型是否发布
+        ruleValue: false,  // 模型规则是否启用
+      }],
     },{
       name: '发行权利凭证类模型',
       description: '通过发行股票、债券、彩票、投资基金证券或者其他债权凭证的方式向社会公众筹集资金。支持识别的非法集资类型：发行或变相发行股票；发行或变相发行债券；发行或变相发行彩票；发行或变相发行投资基金；发行或变相发行期货；发行或变相发行典当。模型结构：基于注意力机制的循环神经网络。',
-      rules: [],
-      instances: [],
+      rules: [
+        {
+            id: 'ID43321432',
+            name: '债权1',
+            regular: '股票|债券|彩票|投资基金',
+            weight: '5000'
+        },
+      ],
+      instances: [{
+        id: 'ID43321432',
+        name: '债权-0506',
+        dataset: 'dataset-2020-05-06.zip',
+        trainingTime: '2020-05-06 15:41:42',
+        releaseValue: [false, true],     // 模型是否发布
+        ruleValue: false,  // 模型规则是否启用
+      }],
     }],
   categories: [
     {

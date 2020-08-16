@@ -49,58 +49,14 @@ export default {
         ruleSearchValue: '',    // 规则配置搜索框数据
         ruleCurrentPage: 1,    // 规则配置当前页
         rulePagesize: 10,      // 规则配置每页条目数
-        ruleApplications: [
-		
-		{   // 规则配置所有数据
-            id: 'ID43321432',
-            name: '冒充领导',
-            regular: '我是.[局处]，明天来一下办公室',
-            weight: '100'
-        },
-		{   // 规则配置所有数据
-            id: 'ID43321432',
-            name: '微信',
-            regular: '//*[@id="cnblogs_post_body"]/p[39]/',
-            weight: '50000.00',
-        }], 
+        ruleApplications: [],  // 规则配置所有数据
         ruleTableData: [],   // 规则配置目前列表数据
         ruleDisplayData: [], // 规则配置当前页显示数据
         // 模型
         modelSearchValue: '',    // 模型搜索框数据
         modelCurrentPage: 1,    // 模型当前页
         modelPagesize: 10,      // 模型每页条目数
-        modelApplications: [{   // 模型所有数据
-            id: 'ID43321432',
-            name: '仿冒身份诈骗-0506',
-            dataset: 'dataset-2020-05-06.zip',
-            trainingTime: '2020-05-06 15:41:42',
-			releaseValue: false,     // 模型是否发布
-			ruleValue: false,  // 模型规则是否启用
-        },
-		{   // 模型所有数据
-            id: 'ID43321433',
-            name: '仿冒身份诈骗-0510',
-            dataset: 'dataset-2020-05-10.zip',
-            trainingTime: '2020-05-10 09:06:21',
-			releaseValue: false,     // 模型是否发布
-			ruleValue: false,  // 模型规则是否启用
-        },
-		{   // 模型所有数据
-            id: 'ID43321445',
-            name: '仿冒身份诈骗-0601',
-            dataset: 'dataset-2020-06-01.zip',
-            trainingTime: '2020-06-02 19:34:59',
-			releaseValue: false,     // 模型是否发布
-			ruleValue: false,  // 模型规则是否启用
-        },
-		{   // 模型所有数据
-            id: 'ID43321456',
-            name: '仿冒身份诈骗-0611',
-            dataset: 'dataset-2020-06-11.zip',
-            trainingTime: '2020-06-11 12:45:32',
-			releaseValue: false,     // 模型是否发布
-			ruleValue: false,  // 模型规则是否启用
-        },],   
+        modelApplications: [],   // 模型所有数据
         modelTableData: [],   // 模型目前列表数据
         modelDisplayData: [],  // 模型当前页显示数据
     },
@@ -151,63 +107,14 @@ export default {
         ruleSearchValue: '',    // 规则配置搜索框数据
         ruleCurrentPage: 1,    // 规则配置当前页
         rulePagesize: 10,      // 规则配置每页条目数
-        ruleApplications: [{   // 规则配置所有数据
-            id: 'ID43321432',
-            name: '高收益1',
-            regular: '回报|收益|利润',
-            weight: '50'
-        },
-		{   // 规则配置所有数据
-            id: 'ID43321433',
-            name: '高收益2',
-            regular: '积分返利',
-            weight: '100'
-        },
-		{   // 规则配置所有数据
-            id: 'ID43321434',
-            name: '高收益3',
-            regular: '随时可取|定期',
-            weight: '50'
-        },
-		], 
+        ruleApplications: [],  // 规则配置所有数据
         ruleTableData: [],   // 规则配置目前列表数据
         ruleDisplayData: [],  // 规则配置当前页显示数据
         // 模型
         modelSearchValue: '',    // 模型搜索框数据
         modelCurrentPage: 1,    // 模型当前页
         modelPagesize: 10,      // 模型每页条目数
-        modelApplications: [{   // 模型所有数据
-            id: 'ID43321432',
-            name: '高收益-0506',
-            dataset: 'dataset-2020-05-06.zip',
-            trainingTime: '2020-05-06 15:41:42',
-			releaseValue: [false, true],     // 模型是否发布
-			ruleValue: false,  // 模型规则是否启用
-        },
-		{   // 模型所有数据
-            id: 'ID43321433',
-            name: '高收益-0510',
-            dataset: 'dataset-2020-05-10.zip',
-            trainingTime: '2020-05-10 09:06:21',
-			releaseValue: [false, true],     // 模型是否发布
-			ruleValue: false,  // 模型规则是否启用
-        },
-		{   // 模型所有数据
-            id: 'ID43321445',
-            name: '高收益-0601',
-            dataset: 'dataset-2020-06-01.zip',
-            trainingTime: '2020-06-02 19:34:59',
-			releaseValue: [false, true],     // 模型是否发布
-			ruleValue: false,  // 模型规则是否启用
-        },
-		{   // 模型所有数据
-            id: 'ID43321456',
-            name: '高收益-0611',
-            dataset: 'dataset-2020-06-11.zip',
-            trainingTime: '2020-06-11 12:45:32',
-			releaseValue: [false, true],     // 模型是否发布
-			ruleValue: false,  // 模型规则是否启用
-        }],   
+        modelApplications: [],  // 模型所有数据
         modelTableData: [],   // 模型目前列表数据
         modelDisplayData: [], // 模型当前页显示数据
     }

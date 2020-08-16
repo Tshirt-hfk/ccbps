@@ -134,6 +134,8 @@ export default {
     },
     methods: {
         init(){
+            this.ruleApplications = this.models[0].rules
+            this.modelApplications = this.models[0].instances
             this.modelRemoteMethod("");
             this.ruleRemoteMethod("");
             this.modelName = this.models[0].name
@@ -149,6 +151,10 @@ export default {
                     break;
                 }
             }
+            this.ruleApplications = this.models[index].rules
+            this.modelApplications = this.models[index].instances
+            this.modelRemoteMethod("");
+            this.ruleRemoteMethod("");
             this.modelName = this.models[index].name;
             this.modelDescription = this.models[index].description
         },
