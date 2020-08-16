@@ -33,7 +33,7 @@
                     </div>
                     <div class="ed-main-overview-content">
                         <span class="ed-main-overview-label">链接:</span>
-                        <span class="ed-main-overview-name">{{item.link}}</span>
+                        <el-link type="primary" :href="item.link" target="_blank" style="font-size: 15px;padding-bottom: 4px;">点击查看原文</el-link>
                     </div>
                 </el-card>
             </div>
@@ -169,7 +169,7 @@ export default {
     border: 1px solid #ccc;
     margin-bottom: 20px;
     width: 585px;
-    height: 250px;
+    min-height: 250px;
 }
 .ed-main-overview-content{
     width: 380px;
@@ -190,7 +190,7 @@ export default {
 }
 .ed-main-details-content{
     color: #909399;
-    font-size: 15px;
-    margin-left: 5px;
+    font-size: 16px;
+    line-height: 25px;
 }
 </style>

@@ -1,25 +1,16 @@
 
 export default {
-    data: [{
-        // 当前页显示数据
-        id: "ID43321432",
-        name: "xxx诈骗事件",
-        type: "冒充领导欺诈",
-        pos: "河北省 承德市",
-        num: 3,
-        source: "微信",         // 来源
-        date: 1592457007735,   // 时间戳
-        money: 5000
-      },
+    data: [
       {
         id: "ID43321433",
         name: "肖某某、陈某某、朱某某诈骗案",
-        type: "网络诈骗",
+        type: "冒充领导欺诈",
         pos: "海南省 儋州市",
         num: 4,  
-        source: "微信",        
+        source: "爱企查",        
         date: 1560096000000,   
         money: 25963,
+        link: "https://xin.baidu.com/wenshu?wenshuId=31fef63ba87daa4a6c6670dd0170d043333d34e7",
         establish: "2015/06/10",
         eventPrepare: "2015/06/10",
         eventDone: "2015/06/20",
@@ -52,50 +43,53 @@ export default {
     },
     {
         id: "ID43321434",
-        name: "韦某某涉嫌诈骗案",
-        type: "网络诈骗",
-        pos: "广西省 宾阳县",
-        num: 4,   
-        source: "论坛",       
+        name: "韦某某等涉嫌诈骗案",
+        type: "冒充公司老总欺诈",
+        pos: "广西省 南宁市",
+        num: 10,   
+        source: "12309中国检查网",       
         date: 1567267200000,   
-        money: 93000,
-        establish: "2019/09",
-        eventPrepare: "2019/09",
-        eventDone: "2019/10/16",
-        arrested: "2019/12/06",
+        money: 1279900,
+        link: "https://www.12309.gov.cn/12309/gj/zj/hzs/hzswxq/zjxflws/201911/t20191125_7254627.shtml",
+        establish: "2017/09",
+        eventPrepare: "2017/09",
+        eventDone: "2017/9/20",
+        arrested: "2019/01/10",
         origination: "\
-            组织成员: 韦某某<br/>\
-            人员数量: 1<br/>\
+            组织成员: 韦某某、陈某某等<br/>\
+            人员数量: 10<br/>\
             注册地: 无\
         ",
         orMember: "\
             序号: 1\
-            姓名: 韦某某\
-            金额: 93000\
+            姓名: 韦某某<br>\
+            序号: 2\
+            姓名: 陈某某\
         ",
     
         hurtedMember: "\
             序号: 1\
-            姓名: 蒋某甲\
-            金额: 66000<br/>\
+            姓名: 王某某\
+            金额: 260000<br/>\
             序号: 2\
-            姓名: 叶某甲\
-            金额: 27000\
+            姓名: 余某某\
+            金额: 830000\
         "
     },
     {
         id: "ID43321435",
         name: "张某某、苏某某等诈骗案",
-        type: "网络诈骗",
+        type: "伪造身份诈骗",
         pos: "福建省 龙岩市",
-        num: 4,  
-        source: "微博",        
+        num: 6,  
+        source: "12309中国检查网",        
         date: 1509465600000,   
         money: 42798,
+        link: "https://www.12309.gov.cn/12309/gj/fj/fzs/fzsmwq/zjxflws/202006/t20200619_8156160.shtml",
         establish: "2017/11",
         eventPrepare: "2017/11",
-        eventDone: "2017/11/21",
-        arrested: "2018/08/11",
+        eventDone: "2017/12/6",
+        arrested: "2019/09/11",
         origination: "\
             组织成员: 杨某某、林某甲、张某某、苏某某、陈某甲、龚某某<br/>\
             人员数量: 6<br/>\
