@@ -18,7 +18,7 @@
                 <el-table-column prop="name" label="规则名称" width="200" show-overflow-tooltip>
                     <template slot-scope="scope">{{ scope.row.name}}</template>
                 </el-table-column>
-                <el-table-column prop="regular" label="正则表达式" width="300" show-overflow-tooltip>
+                <el-table-column prop="regular" label="模型特征" width="300" show-overflow-tooltip>
                     <template slot-scope="scope">{{ scope.row.regular}}</template>
                 </el-table-column>
                 <el-table-column prop="weight" label="权重" width="150" show-overflow-tooltip>
@@ -34,7 +34,7 @@
             <div class="passed-page">
             <el-pagination @current-change="handleRuleCurrentChange"
                 :current-page="ruleCurrentPage" :page-size="rulePagesize"
-                layout="total, prev, pager, next, jumper" :total="ruleTableData.length" 
+                layout="prev, pager, next, jumper" :total="ruleTableData.length" 
                 style="width: 300px; max-width: 550px;margin: 0 auto"> </el-pagination>
             </div>
             <div class="so-event-subtitle">模型实例训练与管理</div>
@@ -77,7 +77,7 @@
             <div class="passed-page">
             <el-pagination @current-change="handleModelCurrentChange"
                 :current-page="modelCurrentPage" :page-size="modelPagesize"
-                layout="total, prev, pager, next, jumper" :total="modelTableData.length" 
+                layout="prev, pager, next, jumper" :total="modelTableData.length" 
                 style="width: 300px; max-width: 550px;margin: 0 auto"> </el-pagination>
             </div>
         </div>
@@ -89,7 +89,7 @@
                 <el-form-item label="规则名称">
                     <el-input v-model="ruleForm.name" maxlength="20" show-word-limit></el-input>
                 </el-form-item>
-                <el-form-item label="正则表达式">
+                <el-form-item label="模型特征">
                     <el-input type="textarea" v-model="ruleForm.regular" autosize></el-input>
                 </el-form-item>
                 <el-form-item label="权重">

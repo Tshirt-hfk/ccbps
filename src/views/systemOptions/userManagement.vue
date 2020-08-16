@@ -26,7 +26,7 @@
     <div class="passed-page">
       <el-pagination @current-change="handleCurrentChange"
         :current-page="currentPage" :page-size="pagesize"
-        layout="total, prev, pager, next, jumper" :total="tableData.length" 
+        layout="prev, pager, next, jumper" :total="tableData.length" 
         style="width: 300px; max-width: 550px;margin: 0 auto"> </el-pagination>
         <!-- <el-pagination @current-change="handleCurrentChange"
         :current-page="1" 
@@ -81,33 +81,33 @@ export default {
             role: "普通用户"
           },
           {
-            name: "石原里美",
+            name: "buaaoyc",
             email: "21092830@qq.com",
             userGroup: "外包A",
             role: "普通用户"
           },
           {
-            name: "新垣结衣",
+            name: "拳皇研究所",
             email: "eq8wueqwu@qq.com",
-            userGroup: "外包A",
+            userGroup: "外包B",
             role: "普通用户"
           },
           {
-            name: "长泽雅美",
+            name: "大漠雪狼",
             email: "887283y@qq.com",
-            userGroup: "外包A",
+            userGroup: "外包B",
             role: "普通用户"
           },
           {
-            name: "妻夫木聪",
+            name: "闲云野鹤",
             email: "21092830@qq.com",
-            userGroup: "外包A",
+            userGroup: "外包B",
             role: "普通用户"
           },
           {
-            name: "柏原崇",
+            name: "落单的候鸟",
             email: "eq8wueqwu@qq.com",
-            userGroup: "外包A",
+            userGroup: "外包C",
             role: "普通用户"
           }],
       displayData: [],

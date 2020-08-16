@@ -66,7 +66,7 @@
             @current-change="handleCurrentChange"
             :current-page="currentPage"
             :page-size="pagesize"
-            layout="total, prev, pager, next, jumper"
+            layout="prev, pager, next, jumper"
             :total="tableData.length"
             style="width: 300px; max-width: 550px;margin: 0 auto"
           ></el-pagination>
