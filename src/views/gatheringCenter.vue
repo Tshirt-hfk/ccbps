@@ -69,7 +69,7 @@
             placeholder="请输入关键词"
           ></el-input>
           <el-table :data="allDisplayData" highlight-current-row>
-            <el-table-column prop="id" label="序号" width="120" show-overflow-tooltip>
+            <el-table-column prop="id" label="序号" width="110" show-overflow-tooltip>
               <template slot-scope="scope">{{ scope.row.id}}</template>
             </el-table-column>
             <el-table-column prop="title" label="标题" width="200" show-overflow-tooltip>
@@ -78,17 +78,18 @@
             <el-table-column prop="content" label="正文" width="300" show-overflow-tooltip>
               <template slot-scope="scope">{{ scope.row.content}}</template>
             </el-table-column>
-            <el-table-column prop="time" label="时间" width="120" show-overflow-tooltip>
+            <el-table-column prop="time" label="时间" width="110" show-overflow-tooltip>
               <template slot-scope="scope">{{ scope.row.time}}</template>
             </el-table-column>
-            <el-table-column prop="from" label="来源" width="150" show-overflow-tooltip>
+            <el-table-column prop="from" label="来源" width="140" show-overflow-tooltip>
               <template slot-scope="scope">{{ scope.row.from}}</template>
             </el-table-column>
-            <el-table-column prop="link" label="链接" width="160" show-overflow-tooltip>
-              <template slot-scope="scope">{{ scope.row.link}}</template>
+            <el-table-column prop="link" label="类别" width="80" show-overflow-tooltip>
+              <template slot-scope="scope">{{ scope.row.category}}</template>
             </el-table-column>
             <el-table-column align="right">
               <template slot-scope="scope">
+                <el-button size="mini" type="primary" @click="toData(scope.row.link)">查看</el-button>
                 <el-button size="mini" type="danger" @click="deleteData(scope.row.id)">删除</el-button>
                 <el-button
                   size="mini"
@@ -133,7 +134,7 @@
           <el-button type="primary" @click="publishSource">提 交</el-button>
         </span>
       </el-dialog>
-      <el-dialog title="编辑数据源" :visible.sync="allEditFlag" width="800px" top="12vh" center>
+      <el-dialog title="编辑数据" :visible.sync="allEditFlag" width="800px" top="12vh" center>
         <el-form ref="form" :model="dataForm" label-width="100px">
           <el-form-item label="序号">
             <span>{{dataForm.id}}</span>
@@ -220,7 +221,9 @@ export default {
         title: "",
         content: "",
         time: "",
-        from: ""
+        from: "",
+        link: "",
+        category: ""
       },
       allSearchValue: "", // 搜索框数据
       allCurrentPage: 1,
@@ -413,6 +416,22 @@ export default {
       this.sourceRemoteMethod(this.sourceSearchValue);
       this.sourceEditFlag = false;
     },
+    toData(link){
+      this.$confirm("此操作跳到外部网站, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      })
+        .then(() => {
+          window.open(link)
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消"
+          });
+        });
+    },
     deleteData(id) {
       this.$confirm("此操作将永久删除该数据, 是否继续?", "提示", {
         confirmButtonText: "确定",
@@ -454,6 +473,8 @@ export default {
       this.dataForm.content = this.allDisplayData[index].content;
       this.dataForm.time = this.allDisplayData[index].time;
       this.dataForm.from = this.allDisplayData[index].from;
+      this.dataForm.link = this.allDisplayData[index].link;
+      this.dataForm.category = this.allDisplayData[index].category;
     },
     publishData() {
       this.allApplications[this.allEditIndex].id = this.dataForm.id;
@@ -461,6 +482,8 @@ export default {
       this.allApplications[this.allEditIndex].content = this.dataForm.content;
       this.allApplications[this.allEditIndex].time = this.dataForm.time;
       this.allApplications[this.allEditIndex].from = this.dataForm.from;
+      this.allApplications[this.allEditIndex].link = this.dataForm.link;
+      this.allApplications[this.allEditIndex].category = this.dataForm.category;
       this.allRemoteMethod(this.allSearchValue);
       this.allEditFlag = false;
     }
