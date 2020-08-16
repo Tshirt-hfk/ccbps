@@ -11,15 +11,6 @@
             <el-radio-button label="近30天"></el-radio-button>
           </el-radio-group>
         </div>
-        <div class="gc-main-radio">
-          <div class="gc-main-radio-title">来源：</div>
-          <el-radio-group v-model="radio2" size="small">
-            <el-radio-button label="全部"></el-radio-button>
-            <el-radio-button label="微信"></el-radio-button>
-            <el-radio-button label="微博"></el-radio-button>
-            <el-radio-button label="新闻"></el-radio-button>
-          </el-radio-group>
-        </div>
         <div class="gc-main-gatherTrend">
           <div class="gc-main-gatherTrend-title">采集量趋势</div>
           <div id="chartLineBox" class="gc-main-gatherTrend-image"></div>
@@ -195,26 +186,11 @@ export default {
         this.lineData = data.lineData[this.radio1];
         this.initLineData();
       }
-    },
-    radio2: {
-      handler(n, o) {
-        if (this.radio2 == "全部") {
-          this.legend = data.lineData.legend;
-          this.color = data.lineData.color;
-        } else {
-          this.legend = [this.radio2];
-          this.color = [
-            data.lineData.color[data.lineData.legend.indexOf(this.radio2)]
-          ];
-        }
-        this.initLineData();
-      }
     }
   },
   data() {
     return {
       radio1: "近24小时", // 筛选选项
-      radio2: "全部",
       lineData: data.lineData["近24小时"], //折线图数据
       legend: data.lineData.legend,
       color: data.lineData.color,
@@ -255,7 +231,6 @@ export default {
   },
   mounted() {
     this.init();
-    
     this.initLineData();
   },
   methods: {
