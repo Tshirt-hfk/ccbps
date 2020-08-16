@@ -26,38 +26,46 @@ export default {  // 采集中心
             // 所有数据
             id: "ID433245671",
             source: "裁判文书网",
-            address: "http://baidu.com",
+            address: "http://wenshu.court.gov.cn/",
             xpath: '//*[@id="_view_1541573883000"]',
             weight: "100.00"
         }, {
             // 所有数据
             id: "ID433245782",
-            source: "微博",
-            address: "http://weibo.com",
+            source: "北大法宝",
+            address: "http://www.pkulaw.cn/",
             xpath: '//*[@id="PCD_pictext_i_v5"]/ul/div[3]/div[2]',
             weight: "100.00"
         },
  {
             // 所有数据
             id: "ID433245782",
-            source: "微信",
-            address: "http://weibo.com",
+            source: "无讼案例",
+            address: "https://www.itslaw.com/home",
             xpath: '//*[@id="PCD_pictext_i_v5"]/ul/div[3]/div[2]',
             weight: "100.00"
         },
 		{
             // 所有数据
             id: "ID433245782",
-            source: "微信",
-            address: "https://mp.weixin.qq.com/",
+            source: "OpenLaw裁判文书",
+            address: "http://openlaw.cn/",
             xpath: '//*[@id="img-content"]',
             weight: "100.00"
         },
-				{
+		{
             // 所有数据
             id: "ID434567621",
-            source: "新浪",
-            address: "https://news.sina.com.cn/",
+            source: "110法律文书",
+            address: "http://wenshu.110.com/",
+            xpath: '//*[@id="article"]',
+            weight: "100.00"
+        },
+        {
+            // 所有数据
+            id: "ID434567621",
+            source: "中国法院网",
+            address: "https://www.chinacourt.org/index.shtml",
             xpath: '//*[@id="article"]',
             weight: "100.00"
         },

@@ -35,11 +35,12 @@
             <el-table-column prop="xpath" label="xpath" width="320" show-overflow-tooltip>
               <template slot-scope="scope">{{ scope.row.xpath}}</template>
             </el-table-column>
-            <el-table-column prop="weight" label="权重" width="200" show-overflow-tooltip>
+            <el-table-column prop="weight" label="权重" width="100" show-overflow-tooltip>
               <template slot-scope="scope">{{ scope.row.weight}}</template>
             </el-table-column>
             <el-table-column align="right">
               <template slot-scope="scope">
+                 <el-button size="mini" type="primary" @click="toAddress(scope.row.address)">查看</el-button>
                 <el-button size="mini" type="danger" @click="deleteSource(scope.row.id)">删除</el-button>
                 <el-button
                   size="mini"
@@ -54,7 +55,7 @@
               @current-change="handleSourceCurrentChange"
               :current-page="sourceCurrentPage"
               :page-size="sourcePagesize"
-              layout="total, prev, pager, next, jumper"
+              layout="prev, pager, next, jumper"
               :total="sourceTableData.length"
               style="width: 300px; max-width: 550px;margin: 0 auto"
             ></el-pagination>
@@ -102,9 +103,9 @@
               @current-change="handleAllCurrentChange"
               :current-page="allCurrentPage"
               :page-size="allPagesize"
-              layout="total, prev, pager, next, jumper"
+              layout="prev, pager, next, jumper"
               :total="allTableData.length"
-              style="width: 300px; max-width: 550px;margin: 0 auto"
+              style="width: 300px; margin: 0 auto"
             ></el-pagination>
           </div>
         </div>
@@ -336,6 +337,22 @@ export default {
         return entry.title.toLowerCase().indexOf(query.toLowerCase()) > -1;
       });
       this.allDisplayData = this.allTableData.slice(0, this.allPagesize);
+    },
+    toAddress(address){
+      this.$confirm("此操作跳到外部网站, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      })
+        .then(() => {
+          window.open(address)
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消"
+          });
+        });
     },
     deleteSource(id) {
       this.$confirm("此操作将永久删除该数据源, 是否继续?", "提示", {
