@@ -77,7 +77,7 @@
             placeholder="请输入关键词"
           ></el-input>
           <el-table :data="allDisplayData" highlight-current-row>
-            <el-table-column prop="id" label="序号" width="150" show-overflow-tooltip>
+            <el-table-column prop="id" label="序号" width="120" show-overflow-tooltip>
               <template slot-scope="scope">{{ scope.row.id}}</template>
             </el-table-column>
             <el-table-column prop="title" label="标题" width="200" show-overflow-tooltip>
@@ -86,11 +86,14 @@
             <el-table-column prop="content" label="正文" width="300" show-overflow-tooltip>
               <template slot-scope="scope">{{ scope.row.content}}</template>
             </el-table-column>
-            <el-table-column prop="time" label="时间" width="150" show-overflow-tooltip>
+            <el-table-column prop="time" label="时间" width="120" show-overflow-tooltip>
               <template slot-scope="scope">{{ scope.row.time}}</template>
             </el-table-column>
-            <el-table-column prop="from" label="来源" width="200" show-overflow-tooltip>
+            <el-table-column prop="from" label="来源" width="150" show-overflow-tooltip>
               <template slot-scope="scope">{{ scope.row.from}}</template>
+            </el-table-column>
+            <el-table-column prop="link" label="链接" width="160" show-overflow-tooltip>
+              <template slot-scope="scope">{{ scope.row.link}}</template>
             </el-table-column>
             <el-table-column align="right">
               <template slot-scope="scope">

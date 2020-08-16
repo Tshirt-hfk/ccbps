@@ -31,6 +31,10 @@
                         <span class="ed-main-overview-label">涉案人数:</span>
                         <span class="ed-main-overview-name">{{item.num}}</span>
                     </div>
+                    <div class="ed-main-overview-content">
+                        <span class="ed-main-overview-label">链接:</span>
+                        <span class="ed-main-overview-name">{{item.link}}</span>
+                    </div>
                 </el-card>
             </div>
             <div class="ed-main-details">
