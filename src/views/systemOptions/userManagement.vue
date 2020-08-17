@@ -75,39 +75,93 @@ export default {
       currentPage: 1,
       pagesize: 5,
       applications: [{
-            name: "sxc",
+            name: "方磊",
             email: "887283y@qq.com",
             userGroup: "外包A",
             role: "普通用户"
           },
           {
-            name: "buaaoyc",
+            name: "欧阳诚",
             email: "21092830@qq.com",
             userGroup: "外包A",
             role: "普通用户"
           },
           {
-            name: "拳皇研究所",
+            name: "郝元帧",
             email: "eq8wueqwu@qq.com",
             userGroup: "外包B",
             role: "普通用户"
           },
           {
-            name: "大漠雪狼",
+            name: "张立",
             email: "887283y@qq.com",
             userGroup: "外包B",
             role: "普通用户"
           },
           {
-            name: "闲云野鹤",
+            name: "杜秋蓉",
             email: "21092830@qq.com",
             userGroup: "外包B",
             role: "普通用户"
           },
           {
-            name: "落单的候鸟",
+            name: "孙玺晨",
             email: "eq8wueqwu@qq.com",
             userGroup: "外包C",
+            role: "普通用户"
+          },
+          {
+            name: "徐琳茹",
+            email: "873465299@qq.com",
+            userGroup: "外包C",
+            role: "普通用户"
+          },
+          {
+            name: "陈梦媛",
+            email: "56344219@qq.com",
+            userGroup: "外包C",
+            role: "普通用户"
+          },
+          {
+            name: "腾叶飞",
+            email: "asodhasikd@qq.com",
+            userGroup: "外包D",
+            role: "普通用户"
+          },
+          {
+            name: "耿欣",
+            email: "asd897vasd@qq.com",
+            userGroup: "外包D",
+            role: "普通用户"
+          },
+          {
+            name: "张文超",
+            email: "asd987ashb@qq.com",
+            userGroup: "外包D",
+            role: "普通用户"
+          },
+          {
+            name: "余东",
+            email: "fdnbvi928@qq.com",
+            userGroup: "外包F",
+            role: "普通用户"
+          },
+          {
+            name: "隋国宾",
+            email: "vubib1289@qq.com",
+            userGroup: "外包F",
+            role: "普通用户"
+          },
+          {
+            name: "陈一鸣",
+            email: "12986y348@qq.com",
+            userGroup: "外包F",
+            role: "普通用户"
+          },
+          {
+            name: "姜鑫",
+            email: "2938476329@qq.com",
+            userGroup: "外包F",
             role: "普通用户"
           }],
       displayData: [],
