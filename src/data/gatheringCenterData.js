@@ -33,24 +33,24 @@ export default {  // 采集中心
             // 所有数据
             id: "ID433245671",
             source: "12309中国检查网",
-            address: "https://www.12309.gov.cn/",
-            xpath: '//*[@id="_view_1541573883000"]',
+            address: "https://www.12309.gov.cn/12309/zjxflws/index.shtml",
+            xpath: '//*[@id="impFile"]/li/a',
             weight: "100.00"
         },
         {
             // 所有数据
             id: "ID433245782",
             source: "北大法宝",
-            address: "http://www.pkulaw.cn/",
-            xpath: '//*[@id="PCD_pictext_i_v5"]/ul/div[3]/div[2]',
+            address: "https://pkulaw.com/",
+            xpath: '//*[@id="rightContent"]/div[2]/div/ul/li/div/div[1]/h4/a[1]',
             weight: "100.00"
         },
  {
             // 所有数据
             id: "ID433245782",
             source: "无讼案例",
-            address: "https://www.itslaw.com/home",
-            xpath: '//*[@id="PCD_pictext_i_v5"]/ul/div[3]/div[2]',
+            address: "https://www.itslaw.com/search?initialization=%7B%22category%22%3A%22CASE%22%2C%22filterList%22%3A%5B%7B%22id%22%3A89%2C%22type%22%3A%22publishType%22%2C%22searchType%22%3A2%2C%22label%22%3A%22%E6%8C%87%E5%AF%BC%E6%A1%88%E4%BE%8B%22%2C%22category%22%3A%22%E6%96%87%E4%B9%A6%E7%B1%BB%E5%9E%8B%22%7D%5D%7D",
+            xpath: '//*[@id="itslaw"]/div/div[3]/div[2]/div[2]/div[2]/a/span/span',
             weight: "100.00"
         },
 		{
@@ -66,22 +66,22 @@ export default {  // 采集中心
             id: "ID434567621",
             source: "110法律文书",
             address: "http://wenshu.110.com/",
-            xpath: '//*[@id="article"]',
+            xpath: '/html/body/div[6]/div[1]/div[3]/ul/li/a',
             weight: "100.00"
         },
         {
             // 所有数据
             id: "ID434567621",
             source: "中国法院网",
-            address: "https://www.chinacourt.org/index.shtml",
-            xpath: '//*[@id="article"]',
+            address: "https://www.chinacourt.org/article/index/id/MzAwNDAwMjAwMSACAAA.shtml",
+            xpath: '//*[@id="articleList"]/ul/li/span[1]/a',
             weight: "100.00"
         },{
             // 所有数据
             id: "ID433245671",
             source: "爱企查",
-            address: "https://aiqicha.baidu.com/",
-            xpath: '//*[@id="_view_1541573883000"]',
+            address: "https://aiqicha.baidu.com/yuqing/latestlyricallist",
+            xpath: '/html/body/div[2]/div/div[1]/div[1]/div[2]/div/a/h3',
             weight: "100.00"
         }, 
     ],
