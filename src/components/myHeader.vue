@@ -16,22 +16,20 @@
           text-color="#ffffff"
           background-color="#0066CC"
           active-text-color="#00ff00"
-          @select="handleSelect"
+          router
         >
-          <el-menu-item index="1">全域扫描</el-menu-item>
-          <el-menu-item index="2">网络诈骗</el-menu-item>
-          <el-menu-item index="3">非法集资</el-menu-item>
-          <el-menu-item index="4">采集中心</el-menu-item>
-          <el-menu-item index="5">系统设置</el-menu-item>
+          <el-menu-item index="/globalScan">全域扫描</el-menu-item>
+          <el-menu-item index="/internetfraud">网络诈骗</el-menu-item>
+          <el-menu-item index="/illegalfund">非法集资</el-menu-item>
+          <el-menu-item index="/gatheringcenter">采集中心</el-menu-item>
+          <el-menu-item index="/systemoptions">系统设置</el-menu-item>
         </el-menu>
       </div>
       <div class="header-r">
-          <div class="header-r-image">
-            <el-avatar :src="circleUrl"></el-avatar>
-          </div>
-          <div class="header-r-name">
-            {{username}}
-          </div>
+        <div class="header-r-image">
+          <el-avatar :src="circleUrl"></el-avatar>
+        </div>
+        <div class="header-r-name">{{username}}</div>
       </div>
     </div>
   </header>
@@ -41,26 +39,16 @@
 export default {
   name: "myHeader",
   data() {
-      return {
-        activeIndex: '1',
-        username: "admin",
-        circleUrl: "https://i2.hdslb.com/bfs/face/62325a7fa7aab0e2e49d7e755d4a15145489c382.jpg_64x64.jpg"
-      };
-    },
-    methods: {
-      handleSelect(key, keyPath) {
-        if(key == '1')
-            this.$router.push("/globalScan");
-        else if(key == '2')
-            this.$router.push("/internetfraud");
-        else if(key == '3')
-            this.$router.push("/illegalfund");
-        else if(key == '4')
-            this.$router.push("/gatheringcenter");
-        else if(key == '5')
-            this.$router.push("/systemoptions");
-      }
-    }
+    return {
+      activeIndex: "",
+      username: "admin",
+      circleUrl:
+        "https://i2.hdslb.com/bfs/face/62325a7fa7aab0e2e49d7e755d4a15145489c382.jpg_64x64.jpg",
+    };
+  },
+  mounted() {
+    this.activeIndex = "/" + window.location.href.split('/')[3]
+  }
 };
 </script>
 
@@ -68,7 +56,7 @@ export default {
 .header {
   height: 70px;
   width: 100%;
-  background: #0066CC;
+  background: #0066cc;
 }
 .header-middle {
   margin: auto;
@@ -83,7 +71,8 @@ export default {
   height: 60px;
   margin-top: 5px;
 }
-.header-l-logo, .header-r-image {
+.header-l-logo,
+.header-r-image {
   float: left;
   height: 60px;
   width: 40px;
@@ -136,7 +125,7 @@ export default {
   border: 0px;
 }
 
-.el-menu-item  {
+.el-menu-item {
   height: 60px;
   line-height: 60px;
   font-size: 18px;

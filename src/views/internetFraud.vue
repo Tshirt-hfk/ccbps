@@ -115,7 +115,8 @@ export default {
     };
   },
   mounted() {
-    his.nodes = this.$refs.tree.getCheckedNodes(true, false).map((item) => {
+    this.$refs.tree.setChecked(1, true, true)
+    this.nodes = this.$refs.tree.getCheckedNodes(true, false).map((item) => {
       return item.label;
     });
     this.remoteMethod();
