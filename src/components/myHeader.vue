@@ -47,7 +47,6 @@ export default {
     };
   },
   mounted() {
-    console.log(window.location.href.split('/')[3])
     this.activeIndex = "/" + window.location.href.split('/')[3]
   }
 };
