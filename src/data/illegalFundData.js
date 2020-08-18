@@ -658,6 +658,74 @@ export default {
       ...<br/>\
   "
     },
+    {
+      id: "ID43321463",
+      name: "杨永斌非法吸收公众存款案",
+      type: "编造网络炒汇概念",
+      pos: "云南省凤庆县",
+      num: 1,
+      source: "无讼案例",
+      link: "https://www.itslaw.com/detail?initialization=%7B%22category%22%3A%22CASE%22%2C%22id%22%3A%229669b8a3-cf5d-42d0-b4e0-4d28e788e4b4%22%2C%22anchor%22%3Anull%2C%22detailKeyWords%22%3A%5B%22%E7%BD%91%E7%BB%9C%E7%82%92%E6%B1%87%22%5D%7D#content_null",
+      date: 1398873600000,
+      money: 389766.13,
+      establish: "2017/01",
+      eventPrepare: "2017/01",
+      eventDone: "2019/01",
+      arrested: "2019/11/26",
+      origination: "\
+      组织成员: 杨永斌<br/>\
+      人员数量: 1<br/>\
+      注册地: 云南省凤庆县\
+  ",
+      orMember: "\
+      序号: 1\
+      姓名: 杨永斌\
+      金额: 389766.13<br/>\
+  ",
+      hurtedMember: "\
+      序号: 1\
+      姓名: 戴某\
+      金额: 94070<br/>\
+      序号: 2\
+      姓名: 杨某\
+      金额: 50000<br/>\
+      序号: 3\
+      姓名: 李某\
+      金额: 27298<br/>\
+      ...<br/>\
+  "
+    },
+    {
+      id: "ID43321464",
+      name: "阳喜章与夏槐、徐秋红民间借贷案",
+      type: "许诺多层级代理人收益",
+      pos: "湖北省武汉市",
+      num: 1,
+      source: "无讼案例",
+      link: "https://www.itslaw.com/detail?initialization=%7B%22category%22%3A%22CASE%22%2C%22id%22%3A%229c4e4709-e8aa-4719-9c34-2847ebe31409%22%2C%22anchor%22%3Anull%2C%22detailKeyWords%22%3A%5B%22%E4%BB%A3%E7%90%86%E4%BA%BA%E6%94%B6%E7%9B%8A%22%5D%7D#content_null",
+      date: 1398873600000,
+      money: 300000,
+      establish: "2012/12",
+      eventPrepare: "2012/12",
+      eventDone: "2012/12",
+      arrested: "2016/04/20",
+      origination: "\
+      组织成员: 阳喜章<br/>\
+      人员数量: 1<br/>\
+      注册地: 云南省凤庆县\
+  ",
+      orMember: "\
+      序号: 1\
+      姓名: 阳喜章\
+      金额: 300000<br/>\
+  ",
+      hurtedMember: "\
+      序号: 1\
+      姓名: 夏槐、徐秋红\
+      金额: 300000<br/>\
+      ...<br/>\
+  "
+    },
   ],
   models: [{
     name: '“高收益”投资模型',
