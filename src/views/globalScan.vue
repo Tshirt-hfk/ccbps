@@ -19,7 +19,7 @@
               <div class="gc-main-left-normTitle">较上周</div>
               <div
                 class="gc-main-left-normData"
-                v-for="item in data.normData.data"
+                v-for="item in titleData"
                 :key="item"
               >{{item}}</div>
             </div>
@@ -101,20 +101,26 @@ export default {
   data() {
     return {
       activeName: "first",
+      titleData: [],
       data: data,
       index: [0, 2]
     };
   },
-  mounted() {},
+  mounted() {
+    this.titleData = this.data.normData.data[0]
+  },
   methods: {
     handleClick(tab, event) {
       var a, b;
       if (this.activeName == "first") {
         (a = 0), (b = 2);
+        this.titleData = this.data.normData.data[0]
       } else if (this.activeName == "second") {
         (a = 0), (b = 1);
+        this.titleData = this.data.normData.data[1]
       } else if (this.activeName == "third") {
         (a = 1), (b = 2);
+        this.titleData = this.data.normData.data[2]
       }
       this.index = [a, b];
     }
